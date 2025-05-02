@@ -1,0 +1,145 @@
+/* General page styling */
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to right, #111111, #021e4e);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+  color: #333;
+}
+
+/* Centered container styling */
+.container {
+  width: 100%;
+  max-width: 400px;
+  padding: 30px;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: fadeIn 0.5s ease-in-out; /* Fade-in animation */
+}
+
+.container:hover {
+  transform: scale(1.02);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.35);
+}
+
+/* Title styling */
+.container h2 {
+  font-size: 1.8em;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Form styling */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
+
+/* Label styling */
+form label {
+  font-weight: bold;
+  align-self: flex-start;
+  margin-bottom: 5px;
+  color: #666;
+}
+
+/* Input field styling */
+form input[type="text"],
+form input[type="password"],
+form input[type="email"] {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+form input[type="text"]:focus,
+form input[type="password"]:focus,
+form input[type="email"]:focus {
+  border-color: #6a11cb;
+  box-shadow: 0 0 8px rgba(106, 17, 203, 0.3);
+  outline: none;
+}
+
+/* Button styling */
+button {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  background: linear-gradient(90deg, #6a11cb, #2575fc);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background: linear-gradient(90deg, #5a0fbf, #1f63d1);
+}
+
+/* Success and error message styling */
+.success {
+  color: #28a745;
+  background-color: #e9f7ef;
+  padding: 10px;
+  border-radius: 5px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.error {
+  color: #d9534f;
+  background-color: #f8d7da;
+  padding: 10px;
+  border-radius: 5px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+/* Link styling */
+a {
+  color: #2575fc;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #1a57b5;
+}
+
+/* -------------------------------------------------------------------------- */
+
+/* welcome.css */
+
+
+/* Fade-in Animation */
+@keyframes fadeIn {
+  from {
+      opacity: 0.5;
+  }
+  to {
+      opacity: 1;
+  }
+}
+
+/* Success Message Style */
+.welcome-success {
+  color: #28a745; /* Green color for success messages */
+  background-color: rgba(0, 255, 0, 0.1); /* Light green background for contrast */
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 15px;
+}

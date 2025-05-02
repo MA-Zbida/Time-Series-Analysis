@@ -1,0 +1,165 @@
+<html><head><base href="." target="_blank">
+<title>ContactEase - Modern Contact Management</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+
+<link rel="stylesheet" href="../css codes/home_styles.css">
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="nav-content">
+    <div class="logo">ContactEase</div>
+    <div class="nav-links">
+      <a href="#features">Features</a>
+      <a href="#about">About</a>
+      <a href="#testimonials">Testimonials</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<div class="carousel">
+  <div class="slide active">
+    <div class="slide-content">
+      <h2>Organize Your Contacts Effortlessly</h2>
+      <p>Keep all your connections in one place with smart organization tools</p>
+      <a href="../php codes/signup.php" class="btn btn-primary">Get Started</a>
+    </div>
+  </div>
+</div>
+
+<section class="features" id="features">
+  <h2 class="section-title">Why Choose ContactEase?</h2>
+  <div class="features-grid">
+    <div class="feature-card">
+      <svg viewBox="0 0 24 24" width="48" height="48">
+        <path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/>
+      </svg>
+      <h3>Smart Contact Management</h3>
+      <p>Organize and manage your contacts with intuitive tools and features</p>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials" id="testimonials">
+  <h2 class="section-title">What Our Users Say</h2>
+  <div class="testimonial-grid">
+    <div class="testimonial-card">
+      <p>"ContactEase has transformed how I manage my professional network."</p>
+      <div class="testimonial-author">
+        <strong>Sarah Johnson</strong>
+        <p>Marketing Director</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <h2 class="section-title">Get in Touch</h2>
+  <form class="contact-form">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" id="name" required>
+    </div>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" id="email" required>
+    </div>
+    <div class="form-group">
+      <label for="message">Message</label>
+      <textarea id="message" rows="5" required></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Send Message</button>
+  </form>
+</section>
+
+<footer class="footer">
+  <div class="footer-content">
+    <div>
+      <h3>ContactEase</h3>
+      <p>Making contact management simple and efficient</p>
+    </div>
+    <div>
+      <h4>Links</h4>
+      <ul>
+        <li><a href="https://contactease.com/privacy">Privacy Policy</a></li>
+        <li><a href="https://contactease.com/terms">Terms of Service</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <p>Email: info@contactease.com</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const slides = [
+    {
+      title: 'Organize Your Contacts Effortlessly',
+      subtitle: 'Keep all your connections in one place with smart organization tools',
+      cta: 'Get Started'
+    },
+    {
+      title: 'Tag and Categorize',
+      subtitle: 'Create custom tags to organize contacts your way',
+      cta: 'Learn More'
+    },
+    {
+      title: 'Quick Search & Retrieval',
+      subtitle: 'Find any contact in seconds with powerful search features',
+      cta: 'Try Now'
+    }
+  ];
+
+  let currentSlide = 0;
+  const carousel = document.querySelector('.carousel');
+
+  function createSlide(slideData, isActive = false) {
+    const slide = document.createElement('div');
+    slide.className = `slide${isActive ? ' active' : ''}`;
+    slide.innerHTML = `
+      <div class="slide-content">
+        <h2>${slideData.title}</h2>
+        <p>${slideData.subtitle}</p>
+        <a href="../php codes/signup.php" class="btn btn-primary">${slideData.cta}</a>
+      </div>
+    `;
+    return slide;
+  }
+
+  slides.forEach((slideData, index) => {
+    carousel.appendChild(createSlide(slideData, index === 0));
+  });
+
+  setInterval(() => {
+    const slideElements = document.querySelectorAll('.slide');
+    slideElements[currentSlide].classList.remove('active');
+    currentSlide = (currentSlide + 1) % slides.length;
+    slideElements[currentSlide].classList.add('active');
+  }, 5000);
+
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      document.querySelector(this.getAttribute('href')).scrollIntoView({
+        behavior: 'smooth'
+      });
+    });
+  });
+
+  const form = document.querySelector('.contact-form');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    alert('Thank you for your message! We will get back to you soon.');
+    form.reset();
+  });
+});
+</script>
+
+</body>
+</html>
