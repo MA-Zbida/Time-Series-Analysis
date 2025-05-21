@@ -58,12 +58,12 @@ cd Time-Series-Analysis
 ```
 Install Dependencies
 ```
-pip install -r requirements.txt
+pip install -r Time-Series-Analysis/src/requirements.txt
 ```
 Start the Streamlit App
 
 ```
-streamlit run src/app.py
+streamlit run Time-Series-Analysis/src/app.py
 ```
 ## 📊 Example Forecasted Indicators
 IDE
