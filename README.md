@@ -1,9 +1,9 @@
-📈 Moroccan Economy Forecasting with Event Influence
+# 📈 Moroccan Economy Forecasting with Event Influence
 This project aims to forecast the Moroccan economy by predicting key economic indicators using time series models. It uniquely incorporates the influence of significant events (such as holidays, crises, reforms, etc.) occurring during the year. The data is zero-padded monthly to maintain consistent time granularity.
 
 The project features a clean and interactive Streamlit interface for visualizing and exploring forecasts in real-time.
 
-🔍 Overview
+# 🔍 Overview
 Economic forecasting is essential for policy makers, investors, and researchers. This project goes beyond standard forecasting by:
 
 📅 Modeling economic indicators on a monthly basis.
