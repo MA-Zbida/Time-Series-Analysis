@@ -40,7 +40,7 @@ Time-Series-Analysis/
     └── app.py               # main interface app
     └── requirement.txt      # scaler for rate_model
 ```
-⚙️ Features
+## ⚙️ Features
 Zero-Padded Monthly Data: Ensures complete time series continuity.
 
 Event-Aware Modeling: Events are integrated into the feature set to enhance model sensitivity to real-world occurrences.
@@ -49,7 +49,7 @@ Live Predictions: Users can interact with the forecast through a Streamlit dashb
 
 Modular Codebase: Easy to maintain and extend.
 
-🚀 How to Run
+## 🚀 How to Run
 Clone the Repository
 
 ```
@@ -65,7 +65,7 @@ Start the Streamlit App
 ```
 streamlit run src/app.py
 ```
-📊 Example Forecasted Indicators
+## 📊 Example Forecasted Indicators
 IDE
 
 REER
@@ -76,13 +76,13 @@ Import/Export Volumes
 
 These indicators are predicted with respect to both time and known impactful events.
 
-🛠️ Future Enhancements
+## 🛠️ Future Enhancements
 Integration of high-frequency or regional data
 
-Use of NLP for automated event extraction from news articles
+Use chatbot for automated event extraction from news and their intensity
 
-🤝 Contributing
+## 🤝 Contributing
 Contributions are welcome! Please open an issue or submit a pull request with improvements, bug fixes, or new ideas.
 
-📜 License
+## 📜 License
 This project is licensed under the MIT License.
