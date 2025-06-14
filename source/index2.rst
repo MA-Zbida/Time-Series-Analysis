@@ -1,7 +1,7 @@
 .. raw:: html
 
    <div style="display: flex; align-items: center; margin-bottom: 20px;">
-     <img src="../build/html/_static/images/image.png" alt="Logo" width="80" style="margin-right: 20px;">
+     <img src="_static/images/image.png" alt="Logo" width="80" style="margin-right: 20px;">
      <h1 style="margin: 0;">Diagrammes du Système</h1>
    </div>
 ======================
@@ -13,7 +13,7 @@ Diagramme de Classe
 
 Le diagramme de classe illustre les classes utilisées dans l'interface
 
-.. figure:: ../build/html/_static/images/class.png
+.. figure:: _static/images/class.png
    :alt: Diagramme de Classe
    :width: 100%
 
