@@ -13,7 +13,7 @@ Diagramme de Classe
 
 Le diagramme de classe illustre les classes utilisées dans l'interface
 
-.. figure:: _static/images/class.png
+.. figure:: ../build/html/_static/images/class.png
    :alt: Diagramme de Classe
    :width: 100%
 
