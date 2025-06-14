@@ -50,6 +50,13 @@
 <li class="toctree-l3"><a class="reference internal" href="#solution-technique-padding-adaptatif">Solution Technique : Padding Adaptatif</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#gestion-des-variables-exogenes">Gestion des Variables Exogènes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#parametres-des-evenements">Paramètres des événements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#fonctions-de-courbe-disponibles">Fonctions de courbe disponibles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#fonction-principale-de-calcul">Fonction principale de calcul</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#caracteristiques-des-courbes">Caractéristiques des courbes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#architecture-du-modele-cnn-lstm-avec-mecanisme-d-attention">Architecture du Modèle : CNN-LSTM avec Mécanisme d’Attention</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#vue-d-ensemble">Vue d’Ensemble</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#architecture-detaillee">Architecture Détaillée</a><ul>
@@ -136,6 +143,91 @@
 </ul>
 <p>Cette approche garantit que le modèle ne soit pas biaisé par les valeurs de padding artificielles lors de l’entraînement.</p>
 </section>
+</section>
+</section>
+<section id="gestion-des-variables-exogenes">
+<h1>Gestion des Variables Exogènes<a class="headerlink" href="#gestion-des-variables-exogenes" title="Link to this heading"></a></h1>
+<p>Cette section décrit la méthode de traitement des variables exogènes dans le modèle. Chaque événement est caractérisé par plusieurs paramètres qui définissent son impact sur le système :</p>
+<section id="parametres-des-evenements">
+<h2>Paramètres des événements<a class="headerlink" href="#parametres-des-evenements" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>Impact</strong> : Nature de l’événement (positif ou négatif)</p></li>
+<li><p><strong>Durée</strong> : Période d’influence en mois</p></li>
+<li><p><strong>Valeur de pic</strong> : Intensité maximale comprise entre -1 et 1</p></li>
+<li><p><strong>Courbe</strong> : Type de distribution de l’impact (Linéaire, Gaussienne, Exponentielle)</p></li>
+</ul>
+</section>
+<section id="fonctions-de-courbe-disponibles">
+<h2>Fonctions de courbe disponibles<a class="headerlink" href="#fonctions-de-courbe-disponibles" title="Link to this heading"></a></h2>
+<p>Les trois types de courbes implémentées permettent de modéliser différents profils d’impact temporel :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">linear_curve</span><span class="p">(</span><span class="n">peak</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="n">step</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Courbe linéaire décroissante&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">peak</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">step</span> <span class="o">/</span> <span class="n">duration</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">exponential_curve</span><span class="p">(</span><span class="n">peak</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="n">step</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Courbe exponentielle décroissante&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">peak</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span> <span class="o">*</span> <span class="n">step</span> <span class="o">/</span> <span class="n">duration</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">gaussian_curve</span><span class="p">(</span><span class="n">peak</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="n">step</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Courbe gaussienne centrée sur la durée&quot;&quot;&quot;</span>
+    <span class="n">center</span> <span class="o">=</span> <span class="n">duration</span> <span class="o">/</span> <span class="mi">2</span>
+    <span class="n">sigma</span> <span class="o">=</span> <span class="n">duration</span> <span class="o">/</span> <span class="mi">6</span>  <span class="c1"># + large = effet plus lissé</span>
+    <span class="k">return</span> <span class="n">peak</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">((</span><span class="n">step</span> <span class="o">-</span> <span class="n">center</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">sigma</span> <span class="o">**</span> <span class="mi">2</span><span class="p">))</span>
+</pre></div>
+</div>
+</section>
+<section id="fonction-principale-de-calcul">
+<h2>Fonction principale de calcul<a class="headerlink" href="#fonction-principale-de-calcul" title="Link to this heading"></a></h2>
+<p>La fonction <code class="docutils literal notranslate"><span class="pre">event_calc</span></code> applique l’impact d’un événement sur la série temporelle selon les paramètres spécifiés :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">event_calc</span><span class="p">(</span><span class="n">events_df</span><span class="p">,</span> <span class="n">start_date</span><span class="p">,</span> <span class="n">event_type</span><span class="p">,</span> <span class="n">peak_value</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="n">curve</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calcule et applique l&#39;impact d&#39;un événement sur une série temporelle</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">    -----------</span>
+<span class="sd">    events_df : pandas.DataFrame</span>
+<span class="sd">        DataFrame avec index temporel contenant la colonne &#39;event&#39;</span>
+<span class="sd">    start_date : str</span>
+<span class="sd">        Date de début de l&#39;événement</span>
+<span class="sd">    event_type : str</span>
+<span class="sd">        Type d&#39;événement (&#39;good&#39; ou &#39;bad&#39;)</span>
+<span class="sd">    peak_value : float</span>
+<span class="sd">        Valeur maximale de l&#39;impact (entre -1 et 1)</span>
+<span class="sd">    duration : int</span>
+<span class="sd">        Durée de l&#39;événement en mois</span>
+<span class="sd">    curve : str</span>
+<span class="sd">        Type de courbe (&#39;linear&#39;, &#39;exponential&#39;, &#39;gaussian&#39;)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">start</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">start_date</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">duration</span><span class="p">):</span>
+        <span class="c1"># Calcul de la date m mois après le début</span>
+        <span class="n">current</span> <span class="o">=</span> <span class="n">start</span> <span class="o">+</span> <span class="n">pd</span><span class="o">.</span><span class="n">DateOffset</span><span class="p">(</span><span class="n">months</span><span class="o">=</span><span class="n">m</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">current</span> <span class="ow">in</span> <span class="n">events_df</span><span class="o">.</span><span class="n">index</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">curve</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;linear&quot;</span><span class="p">:</span>
+                <span class="n">intensity</span> <span class="o">=</span> <span class="n">linear_curve</span><span class="p">(</span><span class="n">peak_value</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">curve</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;exponential&quot;</span><span class="p">:</span>
+                <span class="n">intensity</span> <span class="o">=</span> <span class="n">exponential_curve</span><span class="p">(</span><span class="n">peak_value</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">curve</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;gaussian&quot;</span><span class="p">:</span>
+                <span class="n">intensity</span> <span class="o">=</span> <span class="n">gaussian_curve</span><span class="p">(</span><span class="n">peak_value</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unknown curve: </span><span class="si">{</span><span class="n">curve</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+            <span class="n">sign</span> <span class="o">=</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">event_type</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;good&quot;</span> <span class="k">else</span> <span class="o">-</span><span class="mi">1</span>
+            <span class="n">events_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">current</span><span class="p">,</span> <span class="s2">&quot;event&quot;</span><span class="p">]</span> <span class="o">+=</span> <span class="n">sign</span> <span class="o">*</span> <span class="n">intensity</span>
+</pre></div>
+</div>
+</section>
+<section id="caracteristiques-des-courbes">
+<h2>Caractéristiques des courbes<a class="headerlink" href="#caracteristiques-des-courbes" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>Linéaire</strong> : Décroissance constante de l’impact, appropriée pour des événements dont l’effet diminue progressivement</p></li>
+<li><p><strong>Exponentielle</strong> : Décroissance rapide puis lente, adaptée aux événements à fort impact initial</p></li>
+<li><p><strong>Gaussienne</strong> : Distribution symétrique autour du point médian, idéale pour des événements avec montée et descente graduelles</p></li>
+</ul>
 </section>
 <section id="architecture-du-modele-cnn-lstm-avec-mecanisme-d-attention">
 <h2>Architecture du Modèle : CNN-LSTM avec Mécanisme d’Attention<a class="headerlink" href="#architecture-du-modele-cnn-lstm-avec-mecanisme-d-attention" title="Link to this heading"></a></h2>

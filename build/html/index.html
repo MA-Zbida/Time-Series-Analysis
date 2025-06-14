@@ -45,6 +45,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="index2.html">Diagrammes du Système</a></li>
 <li class="toctree-l1"><a class="reference internal" href="index3.html">Architecture et Technologies Utilisées</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index3.html#gestion-des-variables-exogenes">Gestion des Variables Exogènes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="index3.html#resultats-visuels-et-analyses">Résultats Visuels et Analyses</a></li>
 <li class="toctree-l1"><a class="reference internal" href="index3.html#conclusion-technique">Conclusion Technique</a></li>
 </ul>
@@ -135,41 +136,6 @@
 <li><p>La quantification de l’incertitude est communiquée à travers un langage clair et compréhensible</p></li>
 </ul>
 </section>
-</section>
-<section id="details-de-l-implementation-technique">
-<h3>Détails de l’Implémentation Technique<a class="headerlink" href="#details-de-l-implementation-technique" title="Link to this heading"></a></h3>
-<p><strong>Pipeline de Traitement des Données</strong></p>
-<p>Le projet maintient la cohérence temporelle grâce à des données mensuelles complétées par des zéros, garantissant que :
-- Toutes les séries temporelles ont une granularité uniforme
-- Les points de données manquants sont gérés systématiquement
-- Les modèles saisonniers et les comportements cycliques sont préservés</p>
-<p><strong>Architecture de l’Interface Utilisateur</strong></p>
-<p>L’interface basée sur Streamlit fournit :
-- <strong>Visualisation en Temps Réel</strong> : Graphiques et diagrammes interactifs pour explorer les prévisions
-- <strong>Intégration de Chronologie d’Événements</strong> : Représentation visuelle de la façon dont les événements sont corrélés aux changements économiques
-- <strong>Analyse de Scénarios</strong> : Les utilisateurs peuvent simuler l’impact d’événements hypothétiques
-- <strong>Analyse Comparative</strong> : Comparaison côte à côte de différents scénarios de prévision</p>
-<p><strong>Entraînement et Validation des Modèles</strong></p>
-<p>Le système emploie des méthodologies d’entraînement sophistiquées :
-- <strong>Validation Croisée</strong> : La validation croisée des séries temporelles assure la robustesse du modèle
-- <strong>Entraînement Conscient des Événements</strong> : Les modèles sont entraînés à reconnaître les modèles avant, pendant et après des événements significatifs
-- <strong>Prévision Multi-Horizon</strong> : Différents horizons de prédiction (court, moyen, long terme) sont supportés</p>
-</section>
-<section id="caracteristiques-avancees">
-<h3>Caractéristiques Avancées<a class="headerlink" href="#caracteristiques-avancees" title="Link to this heading"></a></h3>
-<p><strong>Apprentissage Adaptatif</strong></p>
-<p>Le système est conçu pour s’améliorer continuellement grâce à :
-- <strong>Réentraînement des Modèles</strong> : Mises à jour programmées tous les deux ans pour incorporer de nouveaux modèles de données
-- <strong>Apprentissage d’Événements</strong> : Le système apprend de nouveaux événements et leurs impacts réels sur l’économie
-- <strong>Surveillance des Performances</strong> : Évaluation continue de la précision des prévisions et des performances du modèle</p>
-<p><strong>Quantification de l’Incertitude</strong>
-- <strong>Intervalles de Confiance</strong> : Toutes les prévisions incluent des bornes d’incertitude
-- <strong>Probabilités de Scénarios</strong> : Plusieurs scénarios sont fournis avec des probabilités associées
-- <strong>Évaluation des Risques</strong> : Les risques potentiels à la baisse et à la hausse sont quantifiés</p>
-<p><strong>Capacités d’Intégration</strong>
-- <strong>Points de Terminaison API</strong> : Le système peut être intégré avec des flux de données économiques externes
-- <strong>Fonctionnalité d’Exportation</strong> : Les prévisions et analyses peuvent être exportées dans plusieurs formats
-- <strong>Fonctionnalités Collaboratives</strong> : Plusieurs utilisateurs peuvent partager des scénarios et analyses</p>
 </section>
 <section id="indicateurs-economiques-cles-prevus">
 <h3>Indicateurs Économiques Clés Prévus<a class="headerlink" href="#indicateurs-economiques-cles-prevus" title="Link to this heading"></a></h3>
@@ -541,6 +507,13 @@ streamlit<span class="w"> </span>run<span class="w"> </span>interface/app.py
 </li>
 <li class="toctree-l1"><a class="reference internal" href="index3.html">Architecture et Technologies Utilisées</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="index3.html#gestion-des-donnees-avec-padding">Gestion des Données avec Padding</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="index3.html#gestion-des-variables-exogenes">Gestion des Variables Exogènes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="index3.html#parametres-des-evenements">Paramètres des événements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index3.html#fonctions-de-courbe-disponibles">Fonctions de courbe disponibles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index3.html#fonction-principale-de-calcul">Fonction principale de calcul</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index3.html#caracteristiques-des-courbes">Caractéristiques des courbes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index3.html#architecture-du-modele-cnn-lstm-avec-mecanisme-d-attention">Architecture du Modèle : CNN-LSTM avec Mécanisme d’Attention</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index3.html#fonction-de-perte-personnalisee">Fonction de Perte Personnalisée</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index3.html#architecture-general">Architecture Général</a></li>

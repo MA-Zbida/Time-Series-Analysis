@@ -18,6 +18,94 @@ Nous avons implémenté une stratégie de padding sophistiquée qui permet de tr
 
 Cette approche garantit que le modèle ne soit pas biaisé par les valeurs de padding artificielles lors de l'entraînement.
 
+Gestion des Variables Exogènes
+=================================
+
+Cette section décrit la méthode de traitement des variables exogènes dans le modèle. Chaque événement est caractérisé par plusieurs paramètres qui définissent son impact sur le système :
+
+Paramètres des événements
+-------------------------
+
+* **Impact** : Nature de l'événement (positif ou négatif)
+* **Durée** : Période d'influence en mois
+* **Valeur de pic** : Intensité maximale comprise entre -1 et 1
+* **Courbe** : Type de distribution de l'impact (Linéaire, Gaussienne, Exponentielle)
+
+Fonctions de courbe disponibles
+-------------------------------
+
+Les trois types de courbes implémentées permettent de modéliser différents profils d'impact temporel :
+
+.. code-block:: python
+
+    import numpy as np
+    import pandas as pd
+
+    def linear_curve(peak, duration, step):
+        """Courbe linéaire décroissante"""
+        return peak * (1 - step / duration)
+
+    def exponential_curve(peak, duration, step):
+        """Courbe exponentielle décroissante"""
+        return peak * np.exp(-2 * step / duration)
+
+    def gaussian_curve(peak, duration, step):
+        """Courbe gaussienne centrée sur la durée"""
+        center = duration / 2
+        sigma = duration / 6  # + large = effet plus lissé
+        return peak * np.exp(-((step - center) ** 2) / (2 * sigma ** 2))
+
+Fonction principale de calcul
+-----------------------------
+
+La fonction ``event_calc`` applique l'impact d'un événement sur la série temporelle selon les paramètres spécifiés :
+
+.. code-block:: python
+
+    def event_calc(events_df, start_date, event_type, peak_value, duration, curve):
+        """
+        Calcule et applique l'impact d'un événement sur une série temporelle
+        
+        Parameters:
+        -----------
+        events_df : pandas.DataFrame
+            DataFrame avec index temporel contenant la colonne 'event'
+        start_date : str
+            Date de début de l'événement
+        event_type : str
+            Type d'événement ('good' ou 'bad')
+        peak_value : float
+            Valeur maximale de l'impact (entre -1 et 1)
+        duration : int
+            Durée de l'événement en mois
+        curve : str
+            Type de courbe ('linear', 'exponential', 'gaussian')
+        """
+        start = pd.to_datetime(start_date)
+
+        for m in range(duration):
+            # Calcul de la date m mois après le début
+            current = start + pd.DateOffset(months=m)
+            if current in events_df.index:
+                if curve.lower() == "linear":
+                    intensity = linear_curve(peak_value, duration, m)
+                elif curve.lower() == "exponential":
+                    intensity = exponential_curve(peak_value, duration, m)
+                elif curve.lower() == "gaussian":
+                    intensity = gaussian_curve(peak_value, duration, m)
+                else:
+                    raise ValueError(f"Unknown curve: {curve}")
+
+                sign = 1 if event_type.lower() == "good" else -1
+                events_df.loc[current, "event"] += sign * intensity
+
+Caractéristiques des courbes
+----------------------------
+
+* **Linéaire** : Décroissance constante de l'impact, appropriée pour des événements dont l'effet diminue progressivement
+* **Exponentielle** : Décroissance rapide puis lente, adaptée aux événements à fort impact initial
+* **Gaussienne** : Distribution symétrique autour du point médian, idéale pour des événements avec montée et descente graduelles
+
 Architecture du Modèle : CNN-LSTM avec Mécanisme d'Attention
 ------------------------------------------------------------
 
