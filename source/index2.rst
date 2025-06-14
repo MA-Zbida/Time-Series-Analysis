@@ -4,6 +4,17 @@ Diagrammes du Système
 
 Ce document présente les différents diagrammes UML utilisés pour modéliser l'architecture et le comportement du système de prévision économique marocain.
 
+Diagramme de Classe
+--------------------
+
+Le diagramme de classe illustre les classes utilisées dans l'interface
+
+.. figure:: _static/images/class.png
+   :alt: Diagramme de Classe
+   :width: 100%
+
+   **Figure 2:** Diagramme de Classe montrant les classes d'interface
+
 Diagramme de Séquence
 --------------------
 

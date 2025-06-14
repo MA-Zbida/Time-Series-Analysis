@@ -114,6 +114,15 @@ Masked MSE Loss
 - **Stabilité numérique** : Protection contre la division par zéro
 - **Sérialisation** : Compatible avec la sauvegarde/chargement des modèles Keras
 
+Architecture Général
+-----------------------------------
+.. figure:: _static/images/architect.png
+   :width: 800px
+   :align: center
+   :alt: multi CNN + multi LSTM + Attention Mechanism
+
+   **Figure **: Démonstration du notre architecture finale
+
 Intégration des Variables Exogènes
 -----------------------------------
 
@@ -258,7 +267,7 @@ Performance sur Données de Test
    valeurs réelles (ligne bleue) sur l'ensemble de test. La proximité des courbes 
    démontre la qualité des prédictions obtenues.
 
-.. figure:: _static/images/predictions_vs_actual.png
+.. figure:: _static/images/predictions_vs_actual1.png
    :width: 1000px
    :align: center
    :alt: Prédictions vs valeurs réelles

@@ -84,9 +84,14 @@
 <section id="vue-d-ensemble-du-projet">
 <h3>Vue d’Ensemble du Projet<a class="headerlink" href="#vue-d-ensemble-du-projet" title="Link to this heading"></a></h3>
 <p>Le projet de Prévision de l’Économie Marocaine représente un système d’analyse de séries temporelles avancé conçu pour prédire les indicateurs économiques clés du Maroc. Ce qui distingue ce projet des modèles de prévision économique traditionnels, c’est son intégration sophistiquée d’analyses événementielles et de capacités de traitement du langage naturel, créant un écosystème de prévision complet qui tient compte à la fois des données économiques quantitatives et des impacts qualitatifs des événements.</p>
-</section>
-<section id="architecture-centrale-et-composants">
-<h3>Architecture Centrale et Composants<a class="headerlink" href="#architecture-centrale-et-composants" title="Link to this heading"></a></h3>
+<figure class="align-default" id="id1">
+<a class="reference internal image-reference" href="_images/pipeline.png"><img alt="Piepeline d'interface" src="_images/pipeline.png" style="width: 100%;" />
+</a>
+<figcaption>
+<p><span class="caption-text"><strong>Figure 1:</strong> Pipeline de l’interface</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<hr class="docutils" />
 <p><strong>1. Système de Prévision Multi-Modèles</strong></p>
 <p>Le projet emploie une approche modulaire avec des modèles de réseaux de neurones spécialisés, chacun adapté à des catégories spécifiques d’indicateurs économiques :</p>
 <ul class="simple">
@@ -213,26 +218,301 @@
 </pre></div>
 </div>
 </section>
-<section id="integration-nlp-detaillee">
-<h3>Intégration NLP Détaillée<a class="headerlink" href="#integration-nlp-detaillee" title="Link to this heading"></a></h3>
-<p><strong>Interface IA Conversationnelle</strong></p>
-<p>Le composant chatbot permet aux utilisateurs de :
-- Transformer le prompt en une fichier ou on peut modifier les données extraites comme la date, le peak, la description…
-- Interroger les données économiques en utilisant le langage naturel
-- Explorer les scénarios de prévision à travers le dialogue
-- Recevoir des insights personnalisés basés sur des intérêts spécifiques</p>
-<p><strong>Traitement Automatisé d’Événements</strong></p>
-<p>Les algorithmes NLP automatiquement :
-- Extraient les événements pertinents des sources d’actualités et documents politiques
-- Catégorisent les événements par type et impact économique potentiel
-- Génèrent des courbes d’influence d’événements pour la modélisation
-- Mettent à jour les bases de données d’événements avec de nouveaux développements</p>
-<p><strong>Génération Intelligente de Rapports</strong></p>
-<p>Le système produit :
-- Des résumés en langage naturel des résultats de prévision
-- Des explications de la confiance et de l’incertitude du modèle
-- Une interprétation contextuelle des tendances économiques
-- Des alertes automatisées pour les changements significatifs de prévision</p>
+</section>
+<section id="assistant-ia-chatbot-de-creation-d-evenements">
+<h2>Assistant IA - Chatbot de Création d’Événements<a class="headerlink" href="#assistant-ia-chatbot-de-creation-d-evenements" title="Link to this heading"></a></h2>
+<section id="apercu-general">
+<h3>Aperçu Général<a class="headerlink" href="#apercu-general" title="Link to this heading"></a></h3>
+<p>L’Assistant IA est un chatbot intelligent conçu pour extraire et créer des événements à partir de descriptions en langage naturel. Il utilise un traitement de texte avancé et la reconnaissance de motifs pour analyser automatiquement les informations d’événements et les convertir en données structurées pour l’analyse et la visualisation.</p>
+</section>
+<section id="fonctionnalites">
+<h3>Fonctionnalités<a class="headerlink" href="#fonctionnalites" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt>🤖 <strong>Traitement du Langage Naturel</strong></dt><dd><p>Le chatbot peut comprendre et traiter les descriptions d’événements écrites en français naturel, en extrayant automatiquement les informations clés.</p>
+</dd>
+<dt>📅 <strong>Extraction Intelligente de Dates</strong></dt><dd><p>Prend en charge plusieurs formats de dates et expressions :</p>
+<ul class="simple">
+<li><p>Formats standard : <code class="docutils literal notranslate"><span class="pre">JJ/MM/AAAA</span></code>, <code class="docutils literal notranslate"><span class="pre">AAAA-MM-JJ</span></code></p></li>
+<li><p>Mois français : “15 janvier 2030”, “mars 2028”</p></li>
+<li><p>Expressions relatives : “début 2030”, “deuxième trimestre 2027”</p></li>
+<li><p>Dates contextuelles : “en 2029”, “pour 2030”</p></li>
+</ul>
+</dd>
+<dt>🏷️ <strong>Catégorisation Automatique</strong></dt><dd><p>Les événements sont automatiquement classés en 8 catégories principales :</p>
+<ul class="simple">
+<li><p>🏗️ Infrastructure &amp; Transport</p></li>
+<li><p>⚡ Énergie &amp; Environnement</p></li>
+<li><p>🏭 Industrie &amp; Manufacturing</p></li>
+<li><p>🌾 Agriculture &amp; Agroalimentaire</p></li>
+<li><p>🏖️ Tourisme &amp; Culture</p></li>
+<li><p>🏥 Santé &amp; Éducation</p></li>
+<li><p>📱 Digital &amp; Technologies</p></li>
+<li><p>💼 Économie &amp; Finance</p></li>
+</ul>
+</dd>
+<dt>📊 <strong>Analyse d’Impact</strong></dt><dd><p>Le système détermine automatiquement :</p>
+<ul class="simple">
+<li><p><strong>Sentiment</strong> : Impact positif (Good) ou négatif (Bad)</p></li>
+<li><p><strong>Intensité</strong> : Valeur de pic d’impact de -1.0 à 1.0</p></li>
+<li><p><strong>Durée</strong> : Durée de l’événement en mois</p></li>
+<li><p><strong>Type de Courbe</strong> : Distribution d’impact linéaire, exponentielle ou gaussienne</p></li>
+</ul>
+</dd>
+<dt>📍 <strong>Reconnaissance Géographique</strong></dt><dd><p>Identifie automatiquement les villes marocaines mentionnées dans les descriptions d’événements et les associe à l’événement.</p>
+</dd>
+</dl>
+</section>
+<section id="modes-de-saisie">
+<h3>Modes de Saisie<a class="headerlink" href="#modes-de-saisie" title="Link to this heading"></a></h3>
+<section id="mode-langage-naturel">
+<h4>Mode Langage Naturel<a class="headerlink" href="#mode-langage-naturel" title="Link to this heading"></a></h4>
+<p>Les utilisateurs peuvent décrire les événements en français naturel. L’IA extrait automatiquement toutes les informations pertinentes.</p>
+<p><strong>Exemples de saisie :</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&quot;Inauguration d&#39;une nouvelle usine automobile à Casablanca en mars 2028&quot;
+&quot;Crise économique majeure prévue pour le deuxième trimestre 2027&quot;
+&quot;Ouverture d&#39;un grand complexe touristique à Agadir fin 2029&quot;
+&quot;Lancement du projet de modernisation des ports en 2030&quot;
+</pre></div>
+</div>
+<p><strong>Processus d’extraction :</strong></p>
+<ol class="arabic simple">
+<li><p><strong>Analyse du Texte</strong> : Le système analyse le texte d’entrée pour les mots-clés et motifs</p></li>
+<li><p><strong>Extraction d’Informations</strong> : Les dates, lieux, catégories et indicateurs d’impact sont identifiés</p></li>
+<li><p><strong>Sortie Structurée</strong> : Toutes les informations sont converties en format d’événement structuré</p></li>
+<li><p><strong>Validation</strong> : Les utilisateurs peuvent réviser et modifier les informations extraites avant l’ajout</p></li>
+</ol>
+</section>
+<section id="mode-formulaire-structure">
+<h4>Mode Formulaire Structuré<a class="headerlink" href="#mode-formulaire-structure" title="Link to this heading"></a></h4>
+<p>Pour les utilisateurs qui préfèrent la saisie manuelle, un formulaire structuré est disponible avec les champs suivants :</p>
+<ul class="simple">
+<li><p><strong>Nom de l’Événement</strong> : Nom descriptif de l’événement</p></li>
+<li><p><strong>Date de l’Événement</strong> : Sélecteur de date calendaire</p></li>
+<li><p><strong>Type d’Impact</strong> : Sélection Bon/Mauvais</p></li>
+<li><p><strong>Catégorie</strong> : Menu déroulant avec 8 catégories prédéfinies</p></li>
+<li><p><strong>Impact de Pic</strong> : Curseur de -1.0 à 1.0</p></li>
+<li><p><strong>Durée</strong> : Saisie numérique en mois</p></li>
+<li><p><strong>Courbe d’Impact</strong> : Sélection Linéaire/Exponentielle/Gaussienne</p></li>
+<li><p><strong>Description</strong> : Description en texte libre</p></li>
+</ul>
+</section>
+</section>
+<section id="composants-principaux">
+<h3>Composants Principaux<a class="headerlink" href="#composants-principaux" title="Link to this heading"></a></h3>
+<section id="classe-eventextractor">
+<h4>Classe EventExtractor<a class="headerlink" href="#classe-eventextractor" title="Link to this heading"></a></h4>
+<p>Le moteur de traitement principal qui gère toutes les tâches de traitement du langage naturel.</p>
+<p><strong>Méthodes Clés :</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">extract_date(text:</span> <span class="pre">str)</span> <span class="pre">-&gt;</span> <span class="pre">Optional[str]</span></code></dt><dd><p>Extrait les informations de date du texte en utilisant plusieurs motifs regex pour divers formats de date français.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">extract_category(text:</span> <span class="pre">str)</span> <span class="pre">-&gt;</span> <span class="pre">str</span></code></dt><dd><p>Détermine la catégorie d’événement basée sur la correspondance de mots-clés avec des dictionnaires de catégories prédéfinis.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">extract_sentiment(text:</span> <span class="pre">str)</span> <span class="pre">-&gt;</span> <span class="pre">str</span></code></dt><dd><p>Analyse le sentiment du texte pour déterminer si l’événement a un impact positif ou négatif.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">extract_peak_intensity(text:</span> <span class="pre">str,</span> <span class="pre">event_type:</span> <span class="pre">str)</span> <span class="pre">-&gt;</span> <span class="pre">float</span></code></dt><dd><p>Calcule l’intensité de l’impact de l’événement basée sur les mots-clés d’intensité et le type d’événement.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">extract_duration(text:</span> <span class="pre">str)</span> <span class="pre">-&gt;</span> <span class="pre">int</span></code></dt><dd><p>Estime la durée de l’événement en mois à partir de mentions explicites ou d’inférence basée sur des mots-clés.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">extract_curve_type(text:</span> <span class="pre">str)</span> <span class="pre">-&gt;</span> <span class="pre">str</span></code></dt><dd><p>Détermine le type de courbe d’impact (Linéaire, Exponentielle, Gaussienne) basé sur des mots-clés descriptifs.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">extract_location(text:</span> <span class="pre">str)</span> <span class="pre">-&gt;</span> <span class="pre">List[str]</span></code></dt><dd><p>Identifie les villes marocaines mentionnées dans le texte en utilisant une base de données de villes complète.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">parse_event(text:</span> <span class="pre">str)</span> <span class="pre">-&gt;</span> <span class="pre">Dict</span></code></dt><dd><p>Méthode principale qui orchestre toutes les fonctions d’extraction pour créer un objet événement complet.</p>
+</dd>
+</dl>
+</section>
+<section id="reconnaissance-de-motifs">
+<h4>Reconnaissance de Motifs<a class="headerlink" href="#reconnaissance-de-motifs" title="Link to this heading"></a></h4>
+<p>Le système utilise une reconnaissance de motifs sophistiquée pour :</p>
+<p><strong>Motifs de Date :</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Formats de date standard</span>
+<span class="sa">r</span><span class="s1">&#39;(\d{1,2}[/-]\d{1,2}[/-]\d</span><span class="si">{4}</span><span class="s1">)&#39;</span>  <span class="c1"># JJ/MM/AAAA</span>
+<span class="sa">r</span><span class="s1">&#39;(\d</span><span class="si">{4}</span><span class="s1">[/-]\d{1,2}[/-]\d{1,2})&#39;</span>  <span class="c1"># AAAA/MM/JJ</span>
+
+<span class="c1"># Motifs de mois français</span>
+<span class="sa">r</span><span class="s1">&#39;(\d{1,2})\s+(janvier|février|mars|...)\s+(\d</span><span class="si">{4}</span><span class="s1">)&#39;</span>
+
+<span class="c1"># Expressions de temps relatives</span>
+<span class="sa">r</span><span class="s1">&#39;(début|milieu|fin)\s+(\d</span><span class="si">{4}</span><span class="s1">)&#39;</span>
+<span class="sa">r</span><span class="s1">&#39;(premier|deuxième|troisième|quatrième)\s+trimestre\s+(\d</span><span class="si">{4}</span><span class="s1">)&#39;</span>
+</pre></div>
+</div>
+<p><strong>Mots-clés de Catégorie :</strong>
+Chaque catégorie contient 15-20 mots-clés pertinents pour une classification précise.</p>
+<p><strong>Analyse de Sentiment :</strong>
+Utilise des dictionnaires de mots-clés positifs et négatifs pour déterminer le type d’impact de l’événement.</p>
+</section>
+</section>
+<section id="interface-utilisateur">
+<h3>Interface Utilisateur<a class="headerlink" href="#interface-utilisateur" title="Link to this heading"></a></h3>
+<p>L’interface du chatbot fournit :</p>
+<section id="section-de-saisie">
+<h4>Section de Saisie<a class="headerlink" href="#section-de-saisie" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><strong>Sélection de Mode</strong> : Boutons radio pour choisir entre Langage Naturel et Formulaire Structuré</p></li>
+<li><p><strong>Zone de Texte</strong> : Grand champ de saisie pour les descriptions d’événements</p></li>
+<li><p><strong>Aide Extensible</strong> : Section pliable avec exemples et conseils</p></li>
+</ul>
+</section>
+<section id="section-d-analyse">
+<h4>Section d’Analyse<a class="headerlink" href="#section-d-analyse" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><strong>Bouton Analyser</strong> : Traite le texte de saisie et extrait les informations</p></li>
+<li><p><strong>Affichage des Résultats</strong> : Montre toutes les informations extraites dans un format structuré</p></li>
+<li><p><strong>Validation</strong> : Permet aux utilisateurs de réviser avant d’ajouter à la liste d’événements</p></li>
+</ul>
+</section>
+<section id="gestion-des-evenements">
+<h4>Gestion des Événements<a class="headerlink" href="#gestion-des-evenements" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><strong>Tableau des Événements Actuels</strong> : Affiche tous les événements ajoutés dans un tableau formaté</p></li>
+<li><p><strong>Compteur d’Événements</strong> : Montre le nombre total d’événements</p></li>
+<li><p><strong>Fonction de Suppression</strong> : Option pour supprimer tous les événements</p></li>
+<li><p><strong>Statistiques Résumées</strong> : Aperçu des événements positifs vs négatifs</p></li>
+</ul>
+</section>
+</section>
+<section id="format-de-sortie">
+<h3>Format de Sortie<a class="headerlink" href="#format-de-sortie" title="Link to this heading"></a></h3>
+<p>Chaque événement traité génère un dictionnaire structuré avec les champs suivants :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;Date&quot;</span><span class="p">:</span> <span class="s2">&quot;2028-03-01&quot;</span><span class="p">,</span>                    <span class="c1"># Format de date ISO</span>
+    <span class="s2">&quot;Event&quot;</span><span class="p">:</span> <span class="s2">&quot;Nouvelle Usine Automobile&quot;</span><span class="p">,</span>    <span class="c1"># Nom d&#39;événement généré</span>
+    <span class="s2">&quot;Type&quot;</span><span class="p">:</span> <span class="s2">&quot;Good&quot;</span><span class="p">,</span>                          <span class="c1"># Classification Bon/Mauvais</span>
+    <span class="s2">&quot;Peak&quot;</span><span class="p">:</span> <span class="mf">0.75</span><span class="p">,</span>                           <span class="c1"># Intensité d&#39;impact (-1.0 à 1.0)</span>
+    <span class="s2">&quot;Duration&quot;</span><span class="p">:</span> <span class="mi">24</span><span class="p">,</span>                         <span class="c1"># Durée en mois</span>
+    <span class="s2">&quot;Curve&quot;</span><span class="p">:</span> <span class="s2">&quot;Linear&quot;</span><span class="p">,</span>                      <span class="c1"># Type de courbe d&#39;impact</span>
+    <span class="s2">&quot;Description&quot;</span><span class="p">:</span> <span class="s2">&quot;Description complète de l&#39;événement&quot;</span><span class="p">,</span> <span class="c1"># Texte original ou résumé</span>
+    <span class="s2">&quot;Category&quot;</span><span class="p">:</span> <span class="s2">&quot;🏭 Industrie &amp; Manufacturing&quot;</span><span class="p">,</span> <span class="c1"># Catégorie auto-assignée</span>
+    <span class="s2">&quot;Locations&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Casablanca&quot;</span><span class="p">]</span>             <span class="c1"># Localisations extraites</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="exemples-d-utilisation">
+<h3>Exemples d’Utilisation<a class="headerlink" href="#exemples-d-utilisation" title="Link to this heading"></a></h3>
+<section id="creation-d-evenement-de-base">
+<h4>Création d’Événement de Base<a class="headerlink" href="#creation-d-evenement-de-base" title="Link to this heading"></a></h4>
+<ol class="arabic simple">
+<li><p>Sélectionner le mode “Langage Naturel”</p></li>
+<li><p>Entrer la description d’événement : <em>“Ouverture d’un nouveau port à Tanger en juin 2029”</em></p></li>
+<li><p>Cliquer sur “Analyser l’Événement”</p></li>
+<li><p>Réviser les informations extraites</p></li>
+<li><p>Cliquer sur “Ajouter aux Événements”</p></li>
+</ol>
+<p>Le système extraira :
+- Date : 2029-06-01
+- Catégorie : Infrastructure &amp; Transport
+- Type : Good (en raison du mot-clé “ouverture”)
+- Localisation : Tanger</p>
+</section>
+<section id="analyse-d-evenement-complexe">
+<h4>Analyse d’Événement Complexe<a class="headerlink" href="#analyse-d-evenement-complexe" title="Link to this heading"></a></h4>
+<p>Pour des événements plus complexes avec plusieurs aspects :</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&quot;Lancement d&#39;un projet majeur de développement d&#39;énergies renouvelables
+dans la région de Ouarzazate, prévu pour le premier trimestre 2030,
+avec un impact économique significatif sur toute la région du sud&quot;
+</pre></div>
+</div>
+<p>Le système identifiera :
+- Plusieurs mots-clés de la catégorie énergie
+- Spécification de date trimestrielle
+- Localisation géographique
+- Indicateurs d’intensité d’impact
+- Implications de portée régionale</p>
+</section>
+</section>
+<section id="integration">
+<h3>Intégration<a class="headerlink" href="#integration" title="Link to this heading"></a></h3>
+<section id="gestion-de-l-etat-de-session">
+<h4>Gestion de l’État de Session<a class="headerlink" href="#gestion-de-l-etat-de-session" title="Link to this heading"></a></h4>
+<p>Le chatbot s’intègre avec l’état de session de Streamlit pour maintenir :</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">events_data</span></code> : Liste de tous les événements créés</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">event_extractor</span></code> : Instance EventExtractor initialisée</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">current_extracted_event</span></code> : Stockage temporaire pour les résultats d’analyse</p></li>
+</ul>
+</section>
+<section id="flux-de-donnees">
+<h4>Flux de Données<a class="headerlink" href="#flux-de-donnees" title="Link to this heading"></a></h4>
+<ol class="arabic simple">
+<li><p><strong>Saisie Utilisateur</strong> → Texte en langage naturel ou formulaire structuré</p></li>
+<li><p><strong>Traitement</strong> → EventExtractor analyse et extrait les informations</p></li>
+<li><p><strong>Validation</strong> → L’utilisateur révise les données extraites</p></li>
+<li><p><strong>Stockage</strong> → Événement ajouté à l’état de session</p></li>
+<li><p><strong>Affichage</strong> → Liste d’événements mise à jour affichée à l’utilisateur</p></li>
+</ol>
+</section>
+</section>
+<section id="bonnes-pratiques">
+<h3>Bonnes Pratiques<a class="headerlink" href="#bonnes-pratiques" title="Link to this heading"></a></h3>
+<p>Pour des résultats optimaux lors de l’utilisation du mode langage naturel :</p>
+<section id="directives-de-saisie">
+<h4>Directives de Saisie<a class="headerlink" href="#directives-de-saisie" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><strong>Être Spécifique</strong> : Inclure dates, localisations et descriptions d’impact</p></li>
+<li><p><strong>Utiliser des Mots-clés</strong> : Incorporer du vocabulaire sectoriel pertinent</p></li>
+<li><p><strong>Mentionner l’Échelle</strong> : Inclure des mots comme “majeur”, “important”, “léger” pour l’intensité</p></li>
+<li><p><strong>Ajouter du Contexte</strong> : Fournir des informations de fond pour une meilleure catégorisation</p></li>
+</ul>
+</section>
+<section id="exemples-de-bonnes-saisies">
+<h4>Exemples de Bonnes Saisies<a class="headerlink" href="#exemples-de-bonnes-saisies" title="Link to this heading"></a></h4>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>✅ &quot;Inauguration d&#39;une centrale solaire de 200MW à Ouarzazate en septembre 2028,
+    avec un impact économique majeur sur la région&quot;
+
+✅ &quot;Fermeture définitive de l&#39;usine textile de Casablanca prévue pour fin 2027,
+    entraînant une crise de l&#39;emploi local&quot;
+</pre></div>
+</div>
+</section>
+<section id="exemples-de-mauvaises-saisies">
+<h4>Exemples de Mauvaises Saisies<a class="headerlink" href="#exemples-de-mauvaises-saisies" title="Link to this heading"></a></h4>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>❌ &quot;Quelque chose va se passer&quot;  # Trop vague
+❌ &quot;Nouveau projet&quot;              # Détails manquants
+❌ &quot;Impact économique&quot;           # Aucune description d&#39;événement
+</pre></div>
+</div>
+</section>
+</section>
+<section id="limitations">
+<h3>Limitations<a class="headerlink" href="#limitations" title="Link to this heading"></a></h3>
+<p>Limitations actuelles du système de chatbot :</p>
+<ul class="simple">
+<li><p><strong>Langue</strong> : Principalement optimisé pour les saisies en français</p></li>
+<li><p><strong>Géographie</strong> : Reconnaissance de localisation limitée aux villes marocaines</p></li>
+<li><p><strong>Contexte</strong> : Ne peut accéder aux sources de données externes pour validation</p></li>
+<li><p><strong>Complexité</strong> : Les descriptions multi-événements très complexes peuvent nécessiter une analyse manuelle</p></li>
+</ul>
+</section>
+<section id="ameliorations-futures">
+<h3>Améliorations Futures<a class="headerlink" href="#ameliorations-futures" title="Link to this heading"></a></h3>
+<p>Améliorations prévues incluses :</p>
+<ul class="simple">
+<li><p><strong>Support Multi-langues</strong> : Traitement des langues anglaise et arabe</p></li>
+<li><p><strong>Intégration de Données Externes</strong> : Validation en temps réel contre les sources d’actualités</p></li>
+<li><p><strong>NER Amélioré</strong> : Reconnaissance d’entités nommées améliorée pour les organisations et projets</p></li>
+<li><p><strong>Notation de Sentiment</strong> : Analyse de sentiment plus nuancée avec scores de confiance</p></li>
+<li><p><strong>Fonctionnalité d’Export</strong> : Export direct vers divers formats (CSV, JSON, Excel)</p></li>
+</ul>
+</section>
+<section id="reference-api">
+<h3>Référence API<a class="headerlink" href="#reference-api" title="Link to this heading"></a></h3>
+<p>La fonctionnalité du chatbot est accessible via ces fonctions principales :</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">render_chatbot_tab()</span></code></dt><dd><p>Point d’entrée principal qui rend l’interface complète du chatbot.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">render_natural_language_input()</span></code></dt><dd><p>Gère l’interface de traitement du langage naturel et les interactions utilisateur.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">render_structured_form_input()</span></code></dt><dd><p>Fournit l’interface de formulaire de création d’événement manuel.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">render_current_events()</span></code></dt><dd><p>Affiche la liste d’événements actuelle et les contrôles de gestion.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">get_events_summary()</span></code></dt><dd><p>Retourne une chaîne de résumé des événements actuels pour l’affichage du statut.</p>
+</dd>
+</dl>
+<p>Pour des exemples d’implémentation détaillés et des modèles d’utilisation avancés, référez-vous à la documentation du code source et aux commentaires en ligne.</p>
 </section>
 <section id="comment-commencer">
 <h3>Comment Commencer<a class="headerlink" href="#comment-commencer" title="Link to this heading"></a></h3>
@@ -254,6 +534,7 @@ streamlit<span class="w"> </span>run<span class="w"> </span>interface/app.py
 <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="index2.html">Diagrammes du Système</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="index2.html#diagramme-de-classe">Diagramme de Classe</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index2.html#diagramme-de-sequence">Diagramme de Séquence</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index2.html#diagramme-de-cas-d-utilisation">Diagramme de Cas d’Utilisation</a></li>
 </ul>
@@ -262,6 +543,7 @@ streamlit<span class="w"> </span>run<span class="w"> </span>interface/app.py
 <li class="toctree-l2"><a class="reference internal" href="index3.html#gestion-des-donnees-avec-padding">Gestion des Données avec Padding</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index3.html#architecture-du-modele-cnn-lstm-avec-mecanisme-d-attention">Architecture du Modèle : CNN-LSTM avec Mécanisme d’Attention</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index3.html#fonction-de-perte-personnalisee">Fonction de Perte Personnalisée</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index3.html#architecture-general">Architecture Général</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index3.html#integration-des-variables-exogenes">Intégration des Variables Exogènes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index3.html#optimisation-hyperparametrique-avec-optuna">Optimisation Hyperparamétrique avec Optuna</a></li>
 </ul>

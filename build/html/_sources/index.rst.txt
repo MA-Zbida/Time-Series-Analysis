@@ -21,7 +21,11 @@ Vue d'Ensemble du Projet
 
 Le projet de Prévision de l'Économie Marocaine représente un système d'analyse de séries temporelles avancé conçu pour prédire les indicateurs économiques clés du Maroc. Ce qui distingue ce projet des modèles de prévision économique traditionnels, c'est son intégration sophistiquée d'analyses événementielles et de capacités de traitement du langage naturel, créant un écosystème de prévision complet qui tient compte à la fois des données économiques quantitatives et des impacts qualitatifs des événements.
 
-Architecture Centrale et Composants
+.. figure:: _static/images/pipeline.png
+   :alt: Piepeline d'interface
+   :width: 100%
+   
+   **Figure 1:** Pipeline de l'interface
 ----------------------------------
 
 **1. Système de Prévision Multi-Modèles**
@@ -159,32 +163,327 @@ Structure du Projet
     ├── data.py                      # Traitement et gestion des données
     └── app.py                       # Application Streamlit principale
 
-Intégration NLP Détaillée
--------------------------
+Assistant IA - Chatbot de Création d'Événements
+==============================================
 
-**Interface IA Conversationnelle**
+Aperçu Général
+---------------
 
-Le composant chatbot permet aux utilisateurs de :
-- Transformer le prompt en une fichier ou on peut modifier les données extraites comme la date, le peak, la description...
-- Interroger les données économiques en utilisant le langage naturel
-- Explorer les scénarios de prévision à travers le dialogue
-- Recevoir des insights personnalisés basés sur des intérêts spécifiques
+L'Assistant IA est un chatbot intelligent conçu pour extraire et créer des événements à partir de descriptions en langage naturel. Il utilise un traitement de texte avancé et la reconnaissance de motifs pour analyser automatiquement les informations d'événements et les convertir en données structurées pour l'analyse et la visualisation.
 
-**Traitement Automatisé d'Événements**
+Fonctionnalités
+---------------
 
-Les algorithmes NLP automatiquement :
-- Extraient les événements pertinents des sources d'actualités et documents politiques
-- Catégorisent les événements par type et impact économique potentiel
-- Génèrent des courbes d'influence d'événements pour la modélisation
-- Mettent à jour les bases de données d'événements avec de nouveaux développements
+🤖 **Traitement du Langage Naturel**
+   Le chatbot peut comprendre et traiter les descriptions d'événements écrites en français naturel, en extrayant automatiquement les informations clés.
 
-**Génération Intelligente de Rapports**
+📅 **Extraction Intelligente de Dates**
+   Prend en charge plusieurs formats de dates et expressions :
+   
+   - Formats standard : ``JJ/MM/AAAA``, ``AAAA-MM-JJ``
+   - Mois français : "15 janvier 2030", "mars 2028"
+   - Expressions relatives : "début 2030", "deuxième trimestre 2027"
+   - Dates contextuelles : "en 2029", "pour 2030"
 
-Le système produit :
-- Des résumés en langage naturel des résultats de prévision
-- Des explications de la confiance et de l'incertitude du modèle
-- Une interprétation contextuelle des tendances économiques
-- Des alertes automatisées pour les changements significatifs de prévision
+🏷️ **Catégorisation Automatique**
+   Les événements sont automatiquement classés en 8 catégories principales :
+   
+   - 🏗️ Infrastructure & Transport
+   - ⚡ Énergie & Environnement
+   - 🏭 Industrie & Manufacturing
+   - 🌾 Agriculture & Agroalimentaire
+   - 🏖️ Tourisme & Culture
+   - 🏥 Santé & Éducation
+   - 📱 Digital & Technologies
+   - 💼 Économie & Finance
+
+📊 **Analyse d'Impact**
+   Le système détermine automatiquement :
+   
+   - **Sentiment** : Impact positif (Good) ou négatif (Bad)
+   - **Intensité** : Valeur de pic d'impact de -1.0 à 1.0
+   - **Durée** : Durée de l'événement en mois
+   - **Type de Courbe** : Distribution d'impact linéaire, exponentielle ou gaussienne
+
+📍 **Reconnaissance Géographique**
+   Identifie automatiquement les villes marocaines mentionnées dans les descriptions d'événements et les associe à l'événement.
+
+Modes de Saisie
+----------------
+
+Mode Langage Naturel
+~~~~~~~~~~~~~~~~~~~~
+
+Les utilisateurs peuvent décrire les événements en français naturel. L'IA extrait automatiquement toutes les informations pertinentes.
+
+**Exemples de saisie :**
+
+.. code-block:: text
+
+   "Inauguration d'une nouvelle usine automobile à Casablanca en mars 2028"
+   "Crise économique majeure prévue pour le deuxième trimestre 2027"
+   "Ouverture d'un grand complexe touristique à Agadir fin 2029"
+   "Lancement du projet de modernisation des ports en 2030"
+
+**Processus d'extraction :**
+
+1. **Analyse du Texte** : Le système analyse le texte d'entrée pour les mots-clés et motifs
+2. **Extraction d'Informations** : Les dates, lieux, catégories et indicateurs d'impact sont identifiés
+3. **Sortie Structurée** : Toutes les informations sont converties en format d'événement structuré
+4. **Validation** : Les utilisateurs peuvent réviser et modifier les informations extraites avant l'ajout
+
+Mode Formulaire Structuré
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Pour les utilisateurs qui préfèrent la saisie manuelle, un formulaire structuré est disponible avec les champs suivants :
+
+- **Nom de l'Événement** : Nom descriptif de l'événement
+- **Date de l'Événement** : Sélecteur de date calendaire
+- **Type d'Impact** : Sélection Bon/Mauvais
+- **Catégorie** : Menu déroulant avec 8 catégories prédéfinies
+- **Impact de Pic** : Curseur de -1.0 à 1.0
+- **Durée** : Saisie numérique en mois
+- **Courbe d'Impact** : Sélection Linéaire/Exponentielle/Gaussienne
+- **Description** : Description en texte libre
+
+Composants Principaux
+---------------------
+
+Classe EventExtractor
+~~~~~~~~~~~~~~~~~~~~~
+
+Le moteur de traitement principal qui gère toutes les tâches de traitement du langage naturel.
+
+**Méthodes Clés :**
+
+``extract_date(text: str) -> Optional[str]``
+   Extrait les informations de date du texte en utilisant plusieurs motifs regex pour divers formats de date français.
+
+``extract_category(text: str) -> str``
+   Détermine la catégorie d'événement basée sur la correspondance de mots-clés avec des dictionnaires de catégories prédéfinis.
+
+``extract_sentiment(text: str) -> str``
+   Analyse le sentiment du texte pour déterminer si l'événement a un impact positif ou négatif.
+
+``extract_peak_intensity(text: str, event_type: str) -> float``
+   Calcule l'intensité de l'impact de l'événement basée sur les mots-clés d'intensité et le type d'événement.
+
+``extract_duration(text: str) -> int``
+   Estime la durée de l'événement en mois à partir de mentions explicites ou d'inférence basée sur des mots-clés.
+
+``extract_curve_type(text: str) -> str``
+   Détermine le type de courbe d'impact (Linéaire, Exponentielle, Gaussienne) basé sur des mots-clés descriptifs.
+
+``extract_location(text: str) -> List[str]``
+   Identifie les villes marocaines mentionnées dans le texte en utilisant une base de données de villes complète.
+
+``parse_event(text: str) -> Dict``
+   Méthode principale qui orchestre toutes les fonctions d'extraction pour créer un objet événement complet.
+
+Reconnaissance de Motifs
+~~~~~~~~~~~~~~~~~~~~~~~
+
+Le système utilise une reconnaissance de motifs sophistiquée pour :
+
+**Motifs de Date :**
+
+.. code-block:: python
+
+   # Formats de date standard
+   r'(\d{1,2}[/-]\d{1,2}[/-]\d{4})'  # JJ/MM/AAAA
+   r'(\d{4}[/-]\d{1,2}[/-]\d{1,2})'  # AAAA/MM/JJ
+   
+   # Motifs de mois français
+   r'(\d{1,2})\s+(janvier|février|mars|...)\s+(\d{4})'
+   
+   # Expressions de temps relatives
+   r'(début|milieu|fin)\s+(\d{4})'
+   r'(premier|deuxième|troisième|quatrième)\s+trimestre\s+(\d{4})'
+
+**Mots-clés de Catégorie :**
+Chaque catégorie contient 15-20 mots-clés pertinents pour une classification précise.
+
+**Analyse de Sentiment :**
+Utilise des dictionnaires de mots-clés positifs et négatifs pour déterminer le type d'impact de l'événement.
+
+Interface Utilisateur
+----------------------
+
+L'interface du chatbot fournit :
+
+Section de Saisie
+~~~~~~~~~~~~~~~~~
+
+- **Sélection de Mode** : Boutons radio pour choisir entre Langage Naturel et Formulaire Structuré
+- **Zone de Texte** : Grand champ de saisie pour les descriptions d'événements
+- **Aide Extensible** : Section pliable avec exemples et conseils
+
+Section d'Analyse
+~~~~~~~~~~~~~~~~~
+
+- **Bouton Analyser** : Traite le texte de saisie et extrait les informations
+- **Affichage des Résultats** : Montre toutes les informations extraites dans un format structuré
+- **Validation** : Permet aux utilisateurs de réviser avant d'ajouter à la liste d'événements
+
+Gestion des Événements
+~~~~~~~~~~~~~~~~~~~~~~
+
+- **Tableau des Événements Actuels** : Affiche tous les événements ajoutés dans un tableau formaté
+- **Compteur d'Événements** : Montre le nombre total d'événements
+- **Fonction de Suppression** : Option pour supprimer tous les événements
+- **Statistiques Résumées** : Aperçu des événements positifs vs négatifs
+
+Format de Sortie
+-----------------
+
+Chaque événement traité génère un dictionnaire structuré avec les champs suivants :
+
+.. code-block:: python
+
+   {
+       "Date": "2028-03-01",                    # Format de date ISO
+       "Event": "Nouvelle Usine Automobile",    # Nom d'événement généré
+       "Type": "Good",                          # Classification Bon/Mauvais
+       "Peak": 0.75,                           # Intensité d'impact (-1.0 à 1.0)
+       "Duration": 24,                         # Durée en mois
+       "Curve": "Linear",                      # Type de courbe d'impact
+       "Description": "Description complète de l'événement", # Texte original ou résumé
+       "Category": "🏭 Industrie & Manufacturing", # Catégorie auto-assignée
+       "Locations": ["Casablanca"]             # Localisations extraites
+   }
+
+Exemples d'Utilisation
+-----------------------
+
+Création d'Événement de Base
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+1. Sélectionner le mode "Langage Naturel"
+2. Entrer la description d'événement : *"Ouverture d'un nouveau port à Tanger en juin 2029"*
+3. Cliquer sur "Analyser l'Événement"
+4. Réviser les informations extraites
+5. Cliquer sur "Ajouter aux Événements"
+
+Le système extraira :
+- Date : 2029-06-01
+- Catégorie : Infrastructure & Transport
+- Type : Good (en raison du mot-clé "ouverture")
+- Localisation : Tanger
+
+Analyse d'Événement Complexe
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Pour des événements plus complexes avec plusieurs aspects :
+
+.. code-block:: text
+
+   "Lancement d'un projet majeur de développement d'énergies renouvelables 
+   dans la région de Ouarzazate, prévu pour le premier trimestre 2030, 
+   avec un impact économique significatif sur toute la région du sud"
+
+Le système identifiera :
+- Plusieurs mots-clés de la catégorie énergie
+- Spécification de date trimestrielle  
+- Localisation géographique
+- Indicateurs d'intensité d'impact
+- Implications de portée régionale
+
+Intégration
+-----------
+
+Gestion de l'État de Session
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Le chatbot s'intègre avec l'état de session de Streamlit pour maintenir :
+
+- ``events_data`` : Liste de tous les événements créés
+- ``event_extractor`` : Instance EventExtractor initialisée
+- ``current_extracted_event`` : Stockage temporaire pour les résultats d'analyse
+
+Flux de Données
+~~~~~~~~~~~~~~~
+
+1. **Saisie Utilisateur** → Texte en langage naturel ou formulaire structuré
+2. **Traitement** → EventExtractor analyse et extrait les informations  
+3. **Validation** → L'utilisateur révise les données extraites
+4. **Stockage** → Événement ajouté à l'état de session
+5. **Affichage** → Liste d'événements mise à jour affichée à l'utilisateur
+
+Bonnes Pratiques
+-----------------
+
+Pour des résultats optimaux lors de l'utilisation du mode langage naturel :
+
+Directives de Saisie
+~~~~~~~~~~~~~~~~~~~~
+
+- **Être Spécifique** : Inclure dates, localisations et descriptions d'impact
+- **Utiliser des Mots-clés** : Incorporer du vocabulaire sectoriel pertinent
+- **Mentionner l'Échelle** : Inclure des mots comme "majeur", "important", "léger" pour l'intensité
+- **Ajouter du Contexte** : Fournir des informations de fond pour une meilleure catégorisation
+
+Exemples de Bonnes Saisies
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: text
+
+   ✅ "Inauguration d'une centrale solaire de 200MW à Ouarzazate en septembre 2028, 
+       avec un impact économique majeur sur la région"
+   
+   ✅ "Fermeture définitive de l'usine textile de Casablanca prévue pour fin 2027, 
+       entraînant une crise de l'emploi local"
+
+Exemples de Mauvaises Saisies
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: text
+
+   ❌ "Quelque chose va se passer"  # Trop vague
+   ❌ "Nouveau projet"              # Détails manquants
+   ❌ "Impact économique"           # Aucune description d'événement
+
+Limitations
+-----------
+
+Limitations actuelles du système de chatbot :
+
+- **Langue** : Principalement optimisé pour les saisies en français
+- **Géographie** : Reconnaissance de localisation limitée aux villes marocaines
+- **Contexte** : Ne peut accéder aux sources de données externes pour validation
+- **Complexité** : Les descriptions multi-événements très complexes peuvent nécessiter une analyse manuelle
+
+Améliorations Futures
+--------------------
+
+Améliorations prévues incluses :
+
+- **Support Multi-langues** : Traitement des langues anglaise et arabe
+- **Intégration de Données Externes** : Validation en temps réel contre les sources d'actualités
+- **NER Amélioré** : Reconnaissance d'entités nommées améliorée pour les organisations et projets
+- **Notation de Sentiment** : Analyse de sentiment plus nuancée avec scores de confiance
+- **Fonctionnalité d'Export** : Export direct vers divers formats (CSV, JSON, Excel)
+
+Référence API
+--------------
+
+La fonctionnalité du chatbot est accessible via ces fonctions principales :
+
+``render_chatbot_tab()``
+   Point d'entrée principal qui rend l'interface complète du chatbot.
+
+``render_natural_language_input()``
+   Gère l'interface de traitement du langage naturel et les interactions utilisateur.
+
+``render_structured_form_input()``
+   Fournit l'interface de formulaire de création d'événement manuel.
+
+``render_current_events()``
+   Affiche la liste d'événements actuelle et les contrôles de gestion.
+
+``get_events_summary()``
+   Retourne une chaîne de résumé des événements actuels pour l'affichage du statut.
+
+Pour des exemples d'implémentation détaillés et des modèles d'utilisation avancés, référez-vous à la documentation du code source et aux commentaires en ligne.
 
 Comment Commencer
 -----------------

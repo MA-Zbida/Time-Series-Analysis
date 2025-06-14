@@ -64,6 +64,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#masked-mse-loss">Masked MSE Loss</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#architecture-general">Architecture Général</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#integration-des-variables-exogenes">Intégration des Variables Exogènes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#optimisation-hyperparametrique-avec-optuna">Optimisation Hyperparamétrique avec Optuna</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#methodologie-d-optimisation">Méthodologie d’Optimisation</a></li>
@@ -229,6 +230,18 @@
 </ul>
 </section>
 </section>
+<section id="architecture-general">
+<h2>Architecture Général<a class="headerlink" href="#architecture-general" title="Link to this heading"></a></h2>
+<figure class="align-center" id="id5">
+<a class="reference internal image-reference" href="_images/architect.png"><img alt="multi CNN + multi LSTM + Attention Mechanism" src="_images/architect.png" style="width: 800px;" />
+</a>
+<figcaption>
+<p><span class="caption-text"><a href="#id1"><span class="problematic" id="id2">**</span></a>Figure <a href="#id3"><span class="problematic" id="id4">**</span></a>: Démonstration du notre architecture finale</span><a class="headerlink" href="#id5" title="Link to this image"></a></p>
+<div class="legend">
+</div>
+</figcaption>
+</figure>
+</section>
 <section id="integration-des-variables-exogenes">
 <h2>Intégration des Variables Exogènes<a class="headerlink" href="#integration-des-variables-exogenes" title="Link to this heading"></a></h2>
 <p>Le modèle intègre également des variables exogènes pour enrichir les prédictions :</p>
@@ -320,34 +333,34 @@
 <h2>Visualisations Optuna<a class="headerlink" href="#visualisations-optuna" title="Link to this heading"></a></h2>
 <section id="historique-d-optimisation">
 <h3>Historique d’Optimisation<a class="headerlink" href="#historique-d-optimisation" title="Link to this heading"></a></h3>
-<figure class="align-center" id="id1">
+<figure class="align-center" id="id6">
 <a class="reference internal image-reference" href="_images/optuna_optimization_history.png"><img alt="Historique d'optimisation Optuna" src="_images/optuna_optimization_history.png" style="width: 800px;" />
 </a>
 <figcaption>
 <p><span class="caption-text"><strong>Figure 1</strong> : Évolution de la fonction objectif au cours des essais d’optimisation.
 Cette courbe montre la convergence progressive vers la configuration optimale,
-illustrant l’efficacité de l’algorithme d’optimisation bayésienne.</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+illustrant l’efficacité de l’algorithme d’optimisation bayésienne.</span><a class="headerlink" href="#id6" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 </section>
 <section id="importance-des-hyperparametres-examples">
 <h3>Importance des Hyperparamètres (Examples)<a class="headerlink" href="#importance-des-hyperparametres-examples" title="Link to this heading"></a></h3>
-<figure class="align-center" id="id2">
+<figure class="align-center" id="id7">
 <a class="reference internal image-reference" href="_images/hyperparam_eco1.png"><img alt="Importance des hyperparamètres pour eco1_model" src="_images/hyperparam_eco1.png" style="width: 800px;" />
 </a>
 <figcaption>
 <p><span class="caption-text"><strong>Figure 2</strong> : Analyse de l’importance relative des différents hyperparamètres.
 Ce graphique révèle quels paramètres ont le plus d’impact sur les performances
-du modèle, guidant ainsi les futures optimisations.</span><a class="headerlink" href="#id2" title="Link to this image"></a></p>
+du modèle, guidant ainsi les futures optimisations.</span><a class="headerlink" href="#id7" title="Link to this image"></a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id3">
+<figure class="align-center" id="id8">
 <a class="reference internal image-reference" href="_images/hyperparam_eco2.png"><img alt="Importance des hyperparamètres pour eco1_model" src="_images/hyperparam_eco2.png" style="width: 800px;" />
 </a>
 <figcaption>
 <p><span class="caption-text"><strong>Figure 3</strong> : Analyse de l’importance relative des différents hyperparamètres.
 Ce graphique révèle quels paramètres ont le plus d’impact sur les performances
-du modèle, guidant ainsi les futures optimisations.</span><a class="headerlink" href="#id3" title="Link to this image"></a></p>
+du modèle, guidant ainsi les futures optimisations.</span><a class="headerlink" href="#id8" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 </section>
@@ -356,22 +369,22 @@ du modèle, guidant ainsi les futures optimisations.</span><a class="headerlink"
 <h2>Résultats de Prédiction (Examples)<a class="headerlink" href="#resultats-de-prediction-examples" title="Link to this heading"></a></h2>
 <section id="performance-sur-donnees-de-test">
 <h3>Performance sur Données de Test<a class="headerlink" href="#performance-sur-donnees-de-test" title="Link to this heading"></a></h3>
-<figure class="align-center" id="id4">
-<a class="reference internal image-reference" href="_static/images/predictions_vs_actual.png"><img alt="Prédictions vs valeurs réelles" src="_static/images/predictions_vs_actual.png" style="width: 1000px;" />
+<figure class="align-center" id="id9">
+<a class="reference internal image-reference" href="_images/predictions_vs_actual.png"><img alt="Prédictions vs valeurs réelles" src="_images/predictions_vs_actual.png" style="width: 1000px;" />
 </a>
 <figcaption>
 <p><span class="caption-text"><strong>Figure 5</strong> : Comparaison entre les prédictions du modèle (ligne rouge) et les
 valeurs réelles (ligne bleue) sur l’ensemble de test. La proximité des courbes
-démontre la qualité des prédictions obtenues.</span><a class="headerlink" href="#id4" title="Link to this image"></a></p>
+démontre la qualité des prédictions obtenues.</span><a class="headerlink" href="#id9" title="Link to this image"></a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id5">
-<a class="reference internal image-reference" href="_static/images/predictions_vs_actual.png"><img alt="Prédictions vs valeurs réelles" src="_static/images/predictions_vs_actual.png" style="width: 1000px;" />
+<figure class="align-center" id="id10">
+<a class="reference internal image-reference" href="_images/predictions_vs_actual1.png"><img alt="Prédictions vs valeurs réelles" src="_images/predictions_vs_actual1.png" style="width: 1000px;" />
 </a>
 <figcaption>
 <p><span class="caption-text"><strong>Figure 6</strong> : Comparaison entre les prédictions du modèle (ligne rouge) et les
 valeurs réelles (ligne bleue) sur l’ensemble de test. La proximité des courbes
-démontre la qualité des prédictions obtenues.</span><a class="headerlink" href="#id5" title="Link to this image"></a></p>
+démontre la qualité des prédictions obtenues.</span><a class="headerlink" href="#id10" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 </section>
