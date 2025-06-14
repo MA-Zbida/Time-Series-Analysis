@@ -2,7 +2,7 @@ import streamlit as st
 
 def render_indicators_tab():
     """Rendu de l'onglet sélection d'indicateurs"""
-    st.markdown("### 📊 Economic Indicators")
+    st.markdown("###  Economic Indicators")
     
     # Chargement des indicateurs
     try:
@@ -11,7 +11,7 @@ def render_indicators_tab():
         
         st.markdown(f"""
         <div class="status-success">
-            ✅ Successfully loaded {len(all_indicators)} indicators
+             Successfully loaded {len(all_indicators)} indicators
         </div>
         """, unsafe_allow_html=True)
         
@@ -21,7 +21,7 @@ def render_indicators_tab():
     except Exception as e:
         st.markdown(f"""
         <div class="status-warning">
-            ⚠️ Using default indicators: {str(e)[:50]}...
+             Using default indicators: {str(e)[:50]}...
         </div>
         """, unsafe_allow_html=True)
         
@@ -80,11 +80,11 @@ def render_indicators_tab():
         # Actions rapides
         st.markdown("#### Quick Actions")
         
-        if st.button("🔄 Clear All", use_container_width=True):
+        if st.button(" Clear All", use_container_width=True):
             st.session_state.selected_indicators = []
             st.rerun()
         
-        if st.button("📈 Select Popular", use_container_width=True):
+        if st.button(" Select Popular", use_container_width=True):
             popular_indicators = [
                 "GDP Growth Rate (%)",
                 "Inflation Rate (%)", 
@@ -101,19 +101,19 @@ def render_indicators_tab():
         if st.session_state.selected_indicators:
             st.markdown("#### Selected Indicators")
             for i, indicator in enumerate(st.session_state.selected_indicators, 1):
-                if st.button(f"❌ {indicator[:25]}...", key=f"remove_{i}"):
+                if st.button(f" {indicator[:25]}...", key=f"remove_{i}"):
                     st.session_state.selected_indicators.remove(indicator)
                     st.rerun()
 
 def categorize_indicators(indicators):
     """Catégorise automatiquement les indicateurs"""
     categories = {
-        "💰 Economic Growth": [],
-        "💱 Trade & Finance": [],
-        "📊 Market Indicators": [],
-        "👥 Social Indicators": [],
-        "🌾 Sectoral Data": [],
-        "🔍 Other": []
+        " Economic Growth": [],
+        " Trade & Finance": [],
+        " Market Indicators": [],
+        " Social Indicators": [],
+        " Sectoral Data": [],
+        " Other": []
     }
     
     for indicator in indicators:
@@ -122,54 +122,54 @@ def categorize_indicators(indicators):
         
         # Croissance économique
         if any(word in indicator_lower for word in ['gdp', 'growth', 'pib', 'investissement', 'ide']):
-            categories["💰 Economic Growth"].append(indicator)
+            categories[" Economic Growth"].append(indicator)
             categorized = True
         
         # Commerce et finance
         elif any(word in indicator_lower for word in ['export', 'import', 'exchange', 'reer', 'taux']):
-            categories["💱 Trade & Finance"].append(indicator)
+            categories[" Trade & Finance"].append(indicator)
             categorized = True
         
         # Indicateurs de marché
         elif any(word in indicator_lower for word in ['oil', 'gold', 'price', 'petrole', 'or']):
-            categories["📊 Market Indicators"].append(indicator)
+            categories[" Market Indicators"].append(indicator)
             categorized = True
         
         # Indicateurs sociaux
         elif any(word in indicator_lower for word in ['unemployment', 'chômage', 'inflation', 'démographie']):
-            categories["👥 Social Indicators"].append(indicator)
+            categories[" Social Indicators"].append(indicator)
             categorized = True
         
         # Données sectorielles
         elif any(word in indicator_lower for word in ['wheat', 'tourism', 'consumption', 'blé', 'tourisme']):
-            categories["🌾 Sectoral Data"].append(indicator)
+            categories[" Sectoral Data"].append(indicator)
             categorized = True
         
         # Autres
         if not categorized:
-            categories["🔍 Other"].append(indicator)
+            categories[" Other"].append(indicator)
     
     return categories
 
 def get_default_categories():
     """Retourne les catégories par défaut"""
     return {
-        "💰 Economic Growth": [
+        " Economic Growth": [
             "GDP Growth Rate (%)",
             "Foreign Direct Investment (USD)",
             "Government Expenditure (USD)"
         ],
-        "💱 Trade & Finance": [
+        " Trade & Finance": [
             "Exchange Rate",
             "Export Value (USD)",
             "Import Value (USD)"
         ],
-        "📊 Market Indicators": [
+        " Market Indicators": [
             "Oil Price (USD/barrel)",
             "Gold Price (USD/oz)",
             "Stock Market Index"
         ],
-        "👥 Social Indicators": [
+        " Social Indicators": [
             "Inflation Rate (%)",
             "Unemployment Rate (%)",
             "Population Growth (%)"

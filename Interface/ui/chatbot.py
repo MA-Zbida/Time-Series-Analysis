@@ -22,42 +22,42 @@ class EventExtractor:
         
         # Mots-clés pour catégorisation
         self.categories = {
-            "🏗️ Infrastructure & Transport": [
+            " Infrastructure & Transport": [
                 "route", "autoroute", "pont", "tunnel", "port", "aéroport", "gare", "train", 
                 "métro", "tramway", "transport", "infrastructure", "construction", "lgv",
                 "ligne", "ferroviaire", "maritime", "aérien"
             ],
-            "⚡ Énergie & Environnement": [
+            " Énergie & Environnement": [
                 "énergie", "électricité", "solaire", "éolien", "hydraulique", "barrage",
                 "centrale", "renouvelable", "environnement", "écologie", "carbone",
                 "dessalement", "eau", "nucléaire", "gaz", "pétrole"
             ],
-            "🏭 Industrie & Manufacturing": [
+            " Industrie & Manufacturing": [
                 "usine", "industrie", "manufacturing", "production", "fabrication",
                 "automobile", "textile", "chimie", "métallurgie", "zone industrielle",
                 "factory", "assemblage", "batteries", "technologie"
             ],
-            "🌾 Agriculture & Agroalimentaire": [
+            " Agriculture & Agroalimentaire": [
                 "agriculture", "agricole", "ferme", "élevage", "irrigation", "céréales",
                 "fruits", "légumes", "agroalimentaire", "pêche", "foresterie",
                 "rural", "agriculteur", "récolte", "plantation"
             ],
-            "🏖️ Tourisme & Culture": [
+            " Tourisme & Culture": [
                 "tourisme", "hôtel", "resort", "musée", "culture", "festival",
                 "patrimoine", "archéologie", "art", "théâtre", "cinéma",
                 "station balnéaire", "vacances", "coupe du monde", "sport"
             ],
-            "🏥 Santé & Éducation": [
+            " Santé & Éducation": [
                 "hôpital", "clinique", "santé", "médical", "école", "université",
                 "éducation", "formation", "recherche", "laboratoire", "campus",
                 "médecine", "traitement", "centre de santé"
             ],
-            "📱 Digital & Technologies": [
+            " Digital & Technologies": [
                 "digital", "numérique", "technologie", "informatique", "internet",
                 "5g", "fibre", "data center", "intelligence artificielle", "ia",
                 "blockchain", "cybersécurité", "software", "app", "plateforme"
             ],
-            "💼 Économie & Finance": [
+            " Économie & Finance": [
                 "banque", "finance", "économie", "bourse", "investissement",
                 "fonds", "crédit", "assurance", "startup", "entreprise",
                 "commerce", "export", "import", "pib", "croissance"
@@ -293,14 +293,14 @@ class EventExtractor:
 
 def render_chatbot_tab():
     """Rendu de l'onglet chatbot"""
-    st.header("🤖 AI Assistant - Event Creation")
+    st.header(" AI Assistant - Event Creation")
     
     # Initialisation de l'extracteur
     if 'event_extractor' not in st.session_state:
         st.session_state.event_extractor = EventExtractor()
     
     # Section d'aide
-    with st.expander("💡 How to describe your event", expanded=False):
+    with st.expander(" How to describe your event", expanded=False):
         st.markdown("""
         **Examples of event descriptions:**
         - "Inauguration d'une nouvelle usine automobile à Casablanca en mars 2028"
@@ -309,24 +309,24 @@ def render_chatbot_tab():
         - "Lancement du projet de modernisation des ports en 2030"
         
         **The AI will extract:**
-        - 📅 Date and timeline
-        - 🏷️ Category and type
-        - 📊 Impact intensity and duration
-        - 📍 Geographic location
-        - 📈 Impact curve type
+        -  Date and timeline
+        -  Category and type
+        -  Impact intensity and duration
+        -  Geographic location
+        -  Impact curve type
         """)
     
     # Zone de saisie pour l'événement
-    st.subheader("📝 Describe Your Event")
+    st.subheader(" Describe Your Event")
     
     # Choix du mode de saisie
     input_mode = st.radio(
         "Choose input mode:",
-        ["💬 Natural Language", "📝 Structured Form"],
+        [" Natural Language", " Structured Form"],
         horizontal=True
     )
     
-    if input_mode == "💬 Natural Language":
+    if input_mode == " Natural Language":
         render_natural_language_input()
     else:
         render_structured_form_input()
@@ -350,7 +350,7 @@ def render_natural_language_input():
     col1, col2 = st.columns([1, 1])
     
     with col1:
-        if st.button("🔍 Analyze Event", use_container_width=True, disabled=not user_input):
+        if st.button(" Analyze Event", use_container_width=True, disabled=not user_input):
             if user_input:
                 with st.spinner("Analyzing your event description..."):
                     # Extraction des informations
@@ -358,29 +358,29 @@ def render_natural_language_input():
                     st.session_state.current_extracted_event = extracted_event
                     
                     # Affichage des résultats
-                    st.success("✅ Event analyzed successfully!")
+                    st.success(" Event analyzed successfully!")
                     
                     # Affichage des détails extraits
-                    with st.expander("📋 Extracted Information", expanded=True):
+                    with st.expander(" Extracted Information", expanded=True):
                         col_a, col_b = st.columns(2)
                         
                         with col_a:
-                            st.markdown(f"**📅 Date:** {extracted_event['Date']}")
-                            st.markdown(f"**🏷️ Event:** {extracted_event['Event']}")
-                            st.markdown(f"**📂 Category:** {extracted_event['Category']}")
-                            st.markdown(f"**⚡ Type:** {'✅ Positive' if extracted_event['Type'] == 'Good' else '❌ Negative'}")
+                            st.markdown(f"** Date:** {extracted_event['Date']}")
+                            st.markdown(f"** Event:** {extracted_event['Event']}")
+                            st.markdown(f"** Category:** {extracted_event['Category']}")
+                            st.markdown(f"** Type:** {' Positive' if extracted_event['Type'] == 'Good' else ' Negative'}")
                         
                         with col_b:
-                            st.markdown(f"**📊 Peak Impact:** {extracted_event['Peak']:.2f}")
-                            st.markdown(f"**⏱️ Duration:** {extracted_event['Duration']} months")
-                            st.markdown(f"**📈 Curve:** {extracted_event['Curve']}")
+                            st.markdown(f"** Peak Impact:** {extracted_event['Peak']:.2f}")
+                            st.markdown(f"**⏱ Duration:** {extracted_event['Duration']} months")
+                            st.markdown(f"** Curve:** {extracted_event['Curve']}")
                             if extracted_event['Locations']:
-                                st.markdown(f"**📍 Locations:** {', '.join(extracted_event['Locations'])}")
+                                st.markdown(f"** Locations:** {', '.join(extracted_event['Locations'])}")
                         
-                        st.markdown(f"**📝 Description:** {extracted_event['Description']}")
+                        st.markdown(f"** Description:** {extracted_event['Description']}")
     
     with col2:
-        if st.button("📥 Add to Events", use_container_width=True, 
+        if st.button(" Add to Events", use_container_width=True, 
                     disabled='current_extracted_event' not in st.session_state):
             if 'current_extracted_event' in st.session_state:
                 # Conversion au format attendu
@@ -399,7 +399,7 @@ def render_natural_language_input():
                     st.session_state.events_data = []
                 
                 st.session_state.events_data.append(event_to_add)
-                st.success(f"✅ Event '{event_to_add['Event']}' added successfully!")
+                st.success(f" Event '{event_to_add['Event']}' added successfully!")
                 
                 # Nettoyage
                 if 'current_extracted_event' in st.session_state:
@@ -421,14 +421,14 @@ def render_structured_form_input():
             event_date = st.date_input("Event Date*", min_value=date(2023, 1, 1))
             event_type = st.selectbox("Impact Type*", ["Good", "Bad"])
             category = st.selectbox("Category*", [
-                "🏗️ Infrastructure & Transport",
-                "⚡ Énergie & Environnement", 
-                "🏭 Industrie & Manufacturing",
-                "🌾 Agriculture & Agroalimentaire",
-                "🏖️ Tourisme & Culture",
-                "🏥 Santé & Éducation",
-                "📱 Digital & Technologies",
-                "💼 Économie & Finance"
+                " Infrastructure & Transport",
+                " Énergie & Environnement", 
+                " Industrie & Manufacturing",
+                " Agriculture & Agroalimentaire",
+                " Tourisme & Culture",
+                " Santé & Éducation",
+                " Digital & Technologies",
+                " Économie & Finance"
             ])
         
         with col2:
@@ -438,7 +438,7 @@ def render_structured_form_input():
             
         description = st.text_area("Description", placeholder="Detailed description of the event...")
         
-        submitted = st.form_submit_button("📥 Add Event", use_container_width=True)
+        submitted = st.form_submit_button(" Add Event", use_container_width=True)
         
         if submitted and event_name and event_date:
             event_to_add = {
@@ -455,7 +455,7 @@ def render_structured_form_input():
                 st.session_state.events_data = []
             
             st.session_state.events_data.append(event_to_add)
-            st.success(f"✅ Event '{event_name}' added successfully!")
+            st.success(f" Event '{event_name}' added successfully!")
             st.rerun()
 
 
@@ -463,7 +463,7 @@ def render_current_events():
     """Affichage des événements actuels"""
     
     if st.session_state.events_data:
-        st.subheader(f"📋 Current Events ({len(st.session_state.events_data)})")
+        st.subheader(f" Current Events ({len(st.session_state.events_data)})")
         
         # Affichage sous forme de tableau
         df = pd.DataFrame(st.session_state.events_data)
@@ -473,7 +473,7 @@ def render_current_events():
         if not display_df.empty:
             display_df = display_df[['Date', 'Event', 'Type', 'Peak', 'Duration', 'Description']]
             display_df['Impact'] = display_df.apply(lambda row: 
-                f"{'📈' if row['Type'] == 'Good' else '📉'} {row['Peak']:.2f}", axis=1)
+                f"{'' if row['Type'] == 'Good' else ''} {row['Peak']:.2f}", axis=1)
             display_df['Duration'] = display_df['Duration'].astype(str) + " months"
         
         st.dataframe(
@@ -485,13 +485,13 @@ def render_current_events():
         # Bouton pour vider les événements
         col1, col2, col3 = st.columns([1, 1, 1])
         with col2:
-            if st.button("🗑️ Clear All Events", use_container_width=True):
+            if st.button(" Clear All Events", use_container_width=True):
                 st.session_state.events_data = []
                 st.success("All events cleared!")
                 st.rerun()
     
     else:
-        st.info("💡 No events added yet. Use the AI assistant above to add your first event!")
+        st.info(" No events added yet. Use the AI assistant above to add your first event!")
 
 
 # Fonction d'assistance pour la gestion des événements

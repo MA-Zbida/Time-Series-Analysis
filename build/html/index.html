@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Prévision de l’Économie Marocaine &mdash; Morocco forecast 20225 documentation</title>
+  <title>Analyse Avancée de Séries Temporelles avec Influence d’Événements et Intégration NLP &mdash; Morocco forecast 20225 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
 
@@ -19,7 +19,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Diagrammes du Système" href="index2.html" /> 
+    <link rel="next" title="Diagramme de Classe" href="index2.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -43,11 +43,21 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="index2.html">Diagrammes du Système</a></li>
-<li class="toctree-l1"><a class="reference internal" href="index3.html">Architecture et Technologies Utilisées</a></li>
-<li class="toctree-l1"><a class="reference internal" href="index3.html#gestion-des-variables-exogenes">Gestion des Variables Exogènes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="index3.html#resultats-visuels-et-analyses">Résultats Visuels et Analyses</a></li>
-<li class="toctree-l1"><a class="reference internal" href="index3.html#conclusion-technique">Conclusion Technique</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index2.html">Diagramme de Classe</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index2.html#diagramme-de-sequence">Diagramme de Séquence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index2.html#diagramme-de-cas-d-utilisation">Diagramme de Cas d’Utilisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index3.html">Gestion des Données avec Padding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index3.html#parametres-des-evenements">Paramètres des événements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index3.html#fonctions-de-courbe-disponibles">Fonctions de courbe disponibles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index3.html#fonction-principale-de-calcul">Fonction principale de calcul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index3.html#caracteristiques-des-courbes">Caractéristiques des courbes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index3.html#architecture-du-modele-cnn-lstm-avec-mecanisme-d-attention">Architecture du Modèle : CNN-LSTM avec Mécanisme d’Attention</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index3.html#fonction-de-perte-personnalisee">Fonction de Perte Personnalisée</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index3.html#architecture-general">Architecture Général</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index3.html#integration-des-variables-exogenes">Intégration des Variables Exogènes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index3.html#optimisation-hyperparametrique-avec-optuna">Optimisation Hyperparamétrique avec Optuna</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index3.html#visualisations-optuna">Visualisations Optuna</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index3.html#resultats-de-prediction-examples">Résultats de Prédiction (Examples)</a></li>
 </ul>
 
         </div>
@@ -64,7 +74,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="#" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Prévision de l’Économie Marocaine</li>
+      <li class="breadcrumb-item active">Analyse Avancée de Séries Temporelles avec Influence d’Événements et Intégration NLP</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -74,16 +84,18 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="prevision-de-l-economie-marocaine">
-<h1>Prévision de l’Économie Marocaine<a class="headerlink" href="#prevision-de-l-economie-marocaine" title="Link to this heading"></a></h1>
+  <div style="display: flex; align-items: center; margin-bottom: 20px;">
+  <img src="_static/images/image.png" alt="Logo" width="80" style="margin-right: 20px;">
+  <h1 style="margin: 0;">Prévision de l'Économie Marocaine</h1>
+</div><hr class="docutils" />
 <img alt="Statut Actif" src="https://img.shields.io/badge/Statut-Actif-green" />
 <img alt="Version Python" src="https://img.shields.io/badge/Python-3.8%2B-blue" />
 <img alt="Framework Streamlit" src="https://img.shields.io/badge/Framework-Streamlit-red" />
 <section id="analyse-avancee-de-series-temporelles-avec-influence-d-evenements-et-integration-nlp">
-<h2>Analyse Avancée de Séries Temporelles avec Influence d’Événements et Intégration NLP<a class="headerlink" href="#analyse-avancee-de-series-temporelles-avec-influence-d-evenements-et-integration-nlp" title="Link to this heading"></a></h2>
+<h1>Analyse Avancée de Séries Temporelles avec Influence d’Événements et Intégration NLP<a class="headerlink" href="#analyse-avancee-de-series-temporelles-avec-influence-d-evenements-et-integration-nlp" title="Link to this heading"></a></h1>
 <p>Ce projet représente une approche de pointe pour la prévision économique, spécifiquement conçue pour l’économie marocaine. Il combine une modélisation sophistiquée de séries temporelles avec une analyse événementielle et un traitement du langage naturel pour fournir des prédictions économiques complètes et interprétables.</p>
 <section id="vue-d-ensemble-du-projet">
-<h3>Vue d’Ensemble du Projet<a class="headerlink" href="#vue-d-ensemble-du-projet" title="Link to this heading"></a></h3>
+<h2>Vue d’Ensemble du Projet<a class="headerlink" href="#vue-d-ensemble-du-projet" title="Link to this heading"></a></h2>
 <p>Le projet de Prévision de l’Économie Marocaine représente un système d’analyse de séries temporelles avancé conçu pour prédire les indicateurs économiques clés du Maroc. Ce qui distingue ce projet des modèles de prévision économique traditionnels, c’est son intégration sophistiquée d’analyses événementielles et de capacités de traitement du langage naturel, créant un écosystème de prévision complet qui tient compte à la fois des données économiques quantitatives et des impacts qualitatifs des événements.</p>
 <figure class="align-default" id="id1">
 <a class="reference internal image-reference" href="_images/pipeline.png"><img alt="Piepeline d'interface" src="_images/pipeline.png" style="width: 100%;" />
@@ -113,7 +125,7 @@
 <p><strong>3. Intégration du Traitement du Langage Naturel</strong></p>
 <p>Le composant NLP, implémenté à travers la fonctionnalité de chatbot, sert plusieurs objectifs :</p>
 <section id="interface-de-requete-conversationnelle">
-<h4>Interface de Requête Conversationnelle<a class="headerlink" href="#interface-de-requete-conversationnelle" title="Link to this heading"></a></h4>
+<h3>Interface de Requête Conversationnelle<a class="headerlink" href="#interface-de-requete-conversationnelle" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>Les utilisateurs peuvent poser des questions sur les tendances économiques en langage naturel</p></li>
 <li><p>Le système interprète les requêtes et fournit des prévisions et explications pertinentes</p></li>
@@ -121,7 +133,7 @@
 </ul>
 </section>
 <section id="interpretation-intelligente-des-donnees">
-<h4>Interprétation Intelligente des Données<a class="headerlink" href="#interpretation-intelligente-des-donnees" title="Link to this heading"></a></h4>
+<h3>Interprétation Intelligente des Données<a class="headerlink" href="#interpretation-intelligente-des-donnees" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>Les algorithmes NLP analysent les descriptions textuelles d’événements et catégorisent automatiquement leur impact économique potentiel</p></li>
 <li><p>Les articles de presse, annonces politiques et rapports économiques peuvent être traités pour extraire les événements pertinents</p></li>
@@ -129,7 +141,7 @@
 </ul>
 </section>
 <section id="generation-automatique-de-rapports">
-<h4>Génération Automatique de Rapports<a class="headerlink" href="#generation-automatique-de-rapports" title="Link to this heading"></a></h4>
+<h3>Génération Automatique de Rapports<a class="headerlink" href="#generation-automatique-de-rapports" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>Le système génère des explications en langage naturel des résultats de prévision</p></li>
 <li><p>Les tendances et modèles sont automatiquement décrits dans un format lisible par l’homme</p></li>
@@ -138,7 +150,7 @@
 </section>
 </section>
 <section id="indicateurs-economiques-cles-prevus">
-<h3>Indicateurs Économiques Clés Prévus<a class="headerlink" href="#indicateurs-economiques-cles-prevus" title="Link to this heading"></a></h3>
+<h2>Indicateurs Économiques Clés Prévus<a class="headerlink" href="#indicateurs-economiques-cles-prevus" title="Link to this heading"></a></h2>
 <p>Le système fournit des prévisions pour les indicateurs économiques critiques du Maroc :</p>
 <ul class="simple">
 <li><p><strong>IDE (Indice de Développement des Investissements)</strong> : Suivi des flux d’investissement et des modèles de développement</p></li>
@@ -150,7 +162,7 @@
 </ul>
 </section>
 <section id="structure-du-projet">
-<h3>Structure du Projet<a class="headerlink" href="#structure-du-projet" title="Link to this heading"></a></h3>
+<h2>Structure du Projet<a class="headerlink" href="#structure-du-projet" title="Link to this heading"></a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>interface/
 ├── data/
 │   └── Morocco.csv              # Jeu de données économiques mensuelles (complété par zéros)
@@ -186,17 +198,18 @@
 </section>
 </section>
 <section id="assistant-ia-chatbot-de-creation-d-evenements">
-<h2>Assistant IA - Chatbot de Création d’Événements<a class="headerlink" href="#assistant-ia-chatbot-de-creation-d-evenements" title="Link to this heading"></a></h2>
+<h1>Assistant IA - Chatbot de Création d’Événements<a class="headerlink" href="#assistant-ia-chatbot-de-creation-d-evenements" title="Link to this heading"></a></h1>
 <section id="apercu-general">
-<h3>Aperçu Général<a class="headerlink" href="#apercu-general" title="Link to this heading"></a></h3>
+<h2>Aperçu Général<a class="headerlink" href="#apercu-general" title="Link to this heading"></a></h2>
 <p>L’Assistant IA est un chatbot intelligent conçu pour extraire et créer des événements à partir de descriptions en langage naturel. Il utilise un traitement de texte avancé et la reconnaissance de motifs pour analyser automatiquement les informations d’événements et les convertir en données structurées pour l’analyse et la visualisation.</p>
 </section>
 <section id="fonctionnalites">
-<h3>Fonctionnalités<a class="headerlink" href="#fonctionnalites" title="Link to this heading"></a></h3>
-<dl class="simple">
-<dt>🤖 <strong>Traitement du Langage Naturel</strong></dt><dd><p>Le chatbot peut comprendre et traiter les descriptions d’événements écrites en français naturel, en extrayant automatiquement les informations clés.</p>
+<h2>Fonctionnalités<a class="headerlink" href="#fonctionnalites" title="Link to this heading"></a></h2>
+<blockquote>
+<div><dl class="simple">
+<dt><strong>Traitement du Langage Naturel</strong></dt><dd><p>Le chatbot peut comprendre et traiter les descriptions d’événements écrites en français naturel, en extrayant automatiquement les informations clés.</p>
 </dd>
-<dt>📅 <strong>Extraction Intelligente de Dates</strong></dt><dd><p>Prend en charge plusieurs formats de dates et expressions :</p>
+<dt><strong>Extraction Intelligente de Dates</strong></dt><dd><p>Prend en charge plusieurs formats de dates et expressions :</p>
 <ul class="simple">
 <li><p>Formats standard : <code class="docutils literal notranslate"><span class="pre">JJ/MM/AAAA</span></code>, <code class="docutils literal notranslate"><span class="pre">AAAA-MM-JJ</span></code></p></li>
 <li><p>Mois français : “15 janvier 2030”, “mars 2028”</p></li>
@@ -204,19 +217,19 @@
 <li><p>Dates contextuelles : “en 2029”, “pour 2030”</p></li>
 </ul>
 </dd>
-<dt>🏷️ <strong>Catégorisation Automatique</strong></dt><dd><p>Les événements sont automatiquement classés en 8 catégories principales :</p>
+<dt><strong>Catégorisation Automatique</strong></dt><dd><p>Les événements sont automatiquement classés en 8 catégories principales :</p>
 <ul class="simple">
-<li><p>🏗️ Infrastructure &amp; Transport</p></li>
-<li><p>⚡ Énergie &amp; Environnement</p></li>
-<li><p>🏭 Industrie &amp; Manufacturing</p></li>
-<li><p>🌾 Agriculture &amp; Agroalimentaire</p></li>
-<li><p>🏖️ Tourisme &amp; Culture</p></li>
-<li><p>🏥 Santé &amp; Éducation</p></li>
-<li><p>📱 Digital &amp; Technologies</p></li>
-<li><p>💼 Économie &amp; Finance</p></li>
+<li><p>Infrastructure &amp; Transport</p></li>
+<li><p>Énergie &amp; Environnement</p></li>
+<li><p>Industrie &amp; Manufacturing</p></li>
+<li><p>Agriculture &amp; Agroalimentaire</p></li>
+<li><p>Tourisme &amp; Culture</p></li>
+<li><p>Santé &amp; Éducation</p></li>
+<li><p>Digital &amp; Technologies</p></li>
+<li><p>Économie &amp; Finance</p></li>
 </ul>
 </dd>
-<dt>📊 <strong>Analyse d’Impact</strong></dt><dd><p>Le système détermine automatiquement :</p>
+<dt><strong>Analyse d’Impact</strong></dt><dd><p>Le système détermine automatiquement :</p>
 <ul class="simple">
 <li><p><strong>Sentiment</strong> : Impact positif (Good) ou négatif (Bad)</p></li>
 <li><p><strong>Intensité</strong> : Valeur de pic d’impact de -1.0 à 1.0</p></li>
@@ -224,14 +237,15 @@
 <li><p><strong>Type de Courbe</strong> : Distribution d’impact linéaire, exponentielle ou gaussienne</p></li>
 </ul>
 </dd>
-<dt>📍 <strong>Reconnaissance Géographique</strong></dt><dd><p>Identifie automatiquement les villes marocaines mentionnées dans les descriptions d’événements et les associe à l’événement.</p>
+<dt><strong>Reconnaissance Géographique</strong></dt><dd><p>Identifie automatiquement les villes marocaines mentionnées dans les descriptions d’événements et les associe à l’événement.</p>
 </dd>
 </dl>
+</div></blockquote>
 </section>
 <section id="modes-de-saisie">
-<h3>Modes de Saisie<a class="headerlink" href="#modes-de-saisie" title="Link to this heading"></a></h3>
+<h2>Modes de Saisie<a class="headerlink" href="#modes-de-saisie" title="Link to this heading"></a></h2>
 <section id="mode-langage-naturel">
-<h4>Mode Langage Naturel<a class="headerlink" href="#mode-langage-naturel" title="Link to this heading"></a></h4>
+<h3>Mode Langage Naturel<a class="headerlink" href="#mode-langage-naturel" title="Link to this heading"></a></h3>
 <p>Les utilisateurs peuvent décrire les événements en français naturel. L’IA extrait automatiquement toutes les informations pertinentes.</p>
 <p><strong>Exemples de saisie :</strong></p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&quot;Inauguration d&#39;une nouvelle usine automobile à Casablanca en mars 2028&quot;
@@ -249,7 +263,7 @@
 </ol>
 </section>
 <section id="mode-formulaire-structure">
-<h4>Mode Formulaire Structuré<a class="headerlink" href="#mode-formulaire-structure" title="Link to this heading"></a></h4>
+<h3>Mode Formulaire Structuré<a class="headerlink" href="#mode-formulaire-structure" title="Link to this heading"></a></h3>
 <p>Pour les utilisateurs qui préfèrent la saisie manuelle, un formulaire structuré est disponible avec les champs suivants :</p>
 <ul class="simple">
 <li><p><strong>Nom de l’Événement</strong> : Nom descriptif de l’événement</p></li>
@@ -264,9 +278,9 @@
 </section>
 </section>
 <section id="composants-principaux">
-<h3>Composants Principaux<a class="headerlink" href="#composants-principaux" title="Link to this heading"></a></h3>
+<h2>Composants Principaux<a class="headerlink" href="#composants-principaux" title="Link to this heading"></a></h2>
 <section id="classe-eventextractor">
-<h4>Classe EventExtractor<a class="headerlink" href="#classe-eventextractor" title="Link to this heading"></a></h4>
+<h3>Classe EventExtractor<a class="headerlink" href="#classe-eventextractor" title="Link to this heading"></a></h3>
 <p>Le moteur de traitement principal qui gère toutes les tâches de traitement du langage naturel.</p>
 <p><strong>Méthodes Clés :</strong></p>
 <dl class="simple">
@@ -289,7 +303,7 @@
 </dl>
 </section>
 <section id="reconnaissance-de-motifs">
-<h4>Reconnaissance de Motifs<a class="headerlink" href="#reconnaissance-de-motifs" title="Link to this heading"></a></h4>
+<h3>Reconnaissance de Motifs<a class="headerlink" href="#reconnaissance-de-motifs" title="Link to this heading"></a></h3>
 <p>Le système utilise une reconnaissance de motifs sophistiquée pour :</p>
 <p><strong>Motifs de Date :</strong></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Formats de date standard</span>
@@ -311,10 +325,10 @@ Utilise des dictionnaires de mots-clés positifs et négatifs pour déterminer l
 </section>
 </section>
 <section id="interface-utilisateur">
-<h3>Interface Utilisateur<a class="headerlink" href="#interface-utilisateur" title="Link to this heading"></a></h3>
+<h2>Interface Utilisateur<a class="headerlink" href="#interface-utilisateur" title="Link to this heading"></a></h2>
 <p>L’interface du chatbot fournit :</p>
 <section id="section-de-saisie">
-<h4>Section de Saisie<a class="headerlink" href="#section-de-saisie" title="Link to this heading"></a></h4>
+<h3>Section de Saisie<a class="headerlink" href="#section-de-saisie" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p><strong>Sélection de Mode</strong> : Boutons radio pour choisir entre Langage Naturel et Formulaire Structuré</p></li>
 <li><p><strong>Zone de Texte</strong> : Grand champ de saisie pour les descriptions d’événements</p></li>
@@ -322,7 +336,7 @@ Utilise des dictionnaires de mots-clés positifs et négatifs pour déterminer l
 </ul>
 </section>
 <section id="section-d-analyse">
-<h4>Section d’Analyse<a class="headerlink" href="#section-d-analyse" title="Link to this heading"></a></h4>
+<h3>Section d’Analyse<a class="headerlink" href="#section-d-analyse" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p><strong>Bouton Analyser</strong> : Traite le texte de saisie et extrait les informations</p></li>
 <li><p><strong>Affichage des Résultats</strong> : Montre toutes les informations extraites dans un format structuré</p></li>
@@ -330,7 +344,7 @@ Utilise des dictionnaires de mots-clés positifs et négatifs pour déterminer l
 </ul>
 </section>
 <section id="gestion-des-evenements">
-<h4>Gestion des Événements<a class="headerlink" href="#gestion-des-evenements" title="Link to this heading"></a></h4>
+<h3>Gestion des Événements<a class="headerlink" href="#gestion-des-evenements" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p><strong>Tableau des Événements Actuels</strong> : Affiche tous les événements ajoutés dans un tableau formaté</p></li>
 <li><p><strong>Compteur d’Événements</strong> : Montre le nombre total d’événements</p></li>
@@ -340,7 +354,7 @@ Utilise des dictionnaires de mots-clés positifs et négatifs pour déterminer l
 </section>
 </section>
 <section id="format-de-sortie">
-<h3>Format de Sortie<a class="headerlink" href="#format-de-sortie" title="Link to this heading"></a></h3>
+<h2>Format de Sortie<a class="headerlink" href="#format-de-sortie" title="Link to this heading"></a></h2>
 <p>Chaque événement traité génère un dictionnaire structuré avec les champs suivants :</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;Date&quot;</span><span class="p">:</span> <span class="s2">&quot;2028-03-01&quot;</span><span class="p">,</span>                    <span class="c1"># Format de date ISO</span>
@@ -357,9 +371,9 @@ Utilise des dictionnaires de mots-clés positifs et négatifs pour déterminer l
 </div>
 </section>
 <section id="exemples-d-utilisation">
-<h3>Exemples d’Utilisation<a class="headerlink" href="#exemples-d-utilisation" title="Link to this heading"></a></h3>
+<h2>Exemples d’Utilisation<a class="headerlink" href="#exemples-d-utilisation" title="Link to this heading"></a></h2>
 <section id="creation-d-evenement-de-base">
-<h4>Création d’Événement de Base<a class="headerlink" href="#creation-d-evenement-de-base" title="Link to this heading"></a></h4>
+<h3>Création d’Événement de Base<a class="headerlink" href="#creation-d-evenement-de-base" title="Link to this heading"></a></h3>
 <ol class="arabic simple">
 <li><p>Sélectionner le mode “Langage Naturel”</p></li>
 <li><p>Entrer la description d’événement : <em>“Ouverture d’un nouveau port à Tanger en juin 2029”</em></p></li>
@@ -374,7 +388,7 @@ Utilise des dictionnaires de mots-clés positifs et négatifs pour déterminer l
 - Localisation : Tanger</p>
 </section>
 <section id="analyse-d-evenement-complexe">
-<h4>Analyse d’Événement Complexe<a class="headerlink" href="#analyse-d-evenement-complexe" title="Link to this heading"></a></h4>
+<h3>Analyse d’Événement Complexe<a class="headerlink" href="#analyse-d-evenement-complexe" title="Link to this heading"></a></h3>
 <p>Pour des événements plus complexes avec plusieurs aspects :</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&quot;Lancement d&#39;un projet majeur de développement d&#39;énergies renouvelables
 dans la région de Ouarzazate, prévu pour le premier trimestre 2030,
@@ -390,9 +404,9 @@ avec un impact économique significatif sur toute la région du sud&quot;
 </section>
 </section>
 <section id="integration">
-<h3>Intégration<a class="headerlink" href="#integration" title="Link to this heading"></a></h3>
+<h2>Intégration<a class="headerlink" href="#integration" title="Link to this heading"></a></h2>
 <section id="gestion-de-l-etat-de-session">
-<h4>Gestion de l’État de Session<a class="headerlink" href="#gestion-de-l-etat-de-session" title="Link to this heading"></a></h4>
+<h3>Gestion de l’État de Session<a class="headerlink" href="#gestion-de-l-etat-de-session" title="Link to this heading"></a></h3>
 <p>Le chatbot s’intègre avec l’état de session de Streamlit pour maintenir :</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">events_data</span></code> : Liste de tous les événements créés</p></li>
@@ -401,7 +415,7 @@ avec un impact économique significatif sur toute la région du sud&quot;
 </ul>
 </section>
 <section id="flux-de-donnees">
-<h4>Flux de Données<a class="headerlink" href="#flux-de-donnees" title="Link to this heading"></a></h4>
+<h3>Flux de Données<a class="headerlink" href="#flux-de-donnees" title="Link to this heading"></a></h3>
 <ol class="arabic simple">
 <li><p><strong>Saisie Utilisateur</strong> → Texte en langage naturel ou formulaire structuré</p></li>
 <li><p><strong>Traitement</strong> → EventExtractor analyse et extrait les informations</p></li>
@@ -412,10 +426,10 @@ avec un impact économique significatif sur toute la région du sud&quot;
 </section>
 </section>
 <section id="bonnes-pratiques">
-<h3>Bonnes Pratiques<a class="headerlink" href="#bonnes-pratiques" title="Link to this heading"></a></h3>
+<h2>Bonnes Pratiques<a class="headerlink" href="#bonnes-pratiques" title="Link to this heading"></a></h2>
 <p>Pour des résultats optimaux lors de l’utilisation du mode langage naturel :</p>
 <section id="directives-de-saisie">
-<h4>Directives de Saisie<a class="headerlink" href="#directives-de-saisie" title="Link to this heading"></a></h4>
+<h3>Directives de Saisie<a class="headerlink" href="#directives-de-saisie" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p><strong>Être Spécifique</strong> : Inclure dates, localisations et descriptions d’impact</p></li>
 <li><p><strong>Utiliser des Mots-clés</strong> : Incorporer du vocabulaire sectoriel pertinent</p></li>
@@ -424,26 +438,26 @@ avec un impact économique significatif sur toute la région du sud&quot;
 </ul>
 </section>
 <section id="exemples-de-bonnes-saisies">
-<h4>Exemples de Bonnes Saisies<a class="headerlink" href="#exemples-de-bonnes-saisies" title="Link to this heading"></a></h4>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>✅ &quot;Inauguration d&#39;une centrale solaire de 200MW à Ouarzazate en septembre 2028,
-    avec un impact économique majeur sur la région&quot;
+<h3>Exemples de Bonnes Saisies<a class="headerlink" href="#exemples-de-bonnes-saisies" title="Link to this heading"></a></h3>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&quot;Inauguration d&#39;une centrale solaire de 200MW à Ouarzazate en septembre 2028,
+   avec un impact économique majeur sur la région&quot;
 
-✅ &quot;Fermeture définitive de l&#39;usine textile de Casablanca prévue pour fin 2027,
-    entraînant une crise de l&#39;emploi local&quot;
+&quot;Fermeture définitive de l&#39;usine textile de Casablanca prévue pour fin 2027,
+   entraînant une crise de l&#39;emploi local&quot;
 </pre></div>
 </div>
 </section>
 <section id="exemples-de-mauvaises-saisies">
-<h4>Exemples de Mauvaises Saisies<a class="headerlink" href="#exemples-de-mauvaises-saisies" title="Link to this heading"></a></h4>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>❌ &quot;Quelque chose va se passer&quot;  # Trop vague
-❌ &quot;Nouveau projet&quot;              # Détails manquants
-❌ &quot;Impact économique&quot;           # Aucune description d&#39;événement
+<h3>Exemples de Mauvaises Saisies<a class="headerlink" href="#exemples-de-mauvaises-saisies" title="Link to this heading"></a></h3>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&quot;Quelque chose va se passer&quot;  # Trop vague
+&quot;Nouveau projet&quot;              # Détails manquants
+&quot;Impact économique&quot;           # Aucune description d&#39;événement
 </pre></div>
 </div>
 </section>
 </section>
 <section id="limitations">
-<h3>Limitations<a class="headerlink" href="#limitations" title="Link to this heading"></a></h3>
+<h2>Limitations<a class="headerlink" href="#limitations" title="Link to this heading"></a></h2>
 <p>Limitations actuelles du système de chatbot :</p>
 <ul class="simple">
 <li><p><strong>Langue</strong> : Principalement optimisé pour les saisies en français</p></li>
@@ -453,7 +467,7 @@ avec un impact économique significatif sur toute la région du sud&quot;
 </ul>
 </section>
 <section id="ameliorations-futures">
-<h3>Améliorations Futures<a class="headerlink" href="#ameliorations-futures" title="Link to this heading"></a></h3>
+<h2>Améliorations Futures<a class="headerlink" href="#ameliorations-futures" title="Link to this heading"></a></h2>
 <p>Améliorations prévues incluses :</p>
 <ul class="simple">
 <li><p><strong>Support Multi-langues</strong> : Traitement des langues anglaise et arabe</p></li>
@@ -464,7 +478,7 @@ avec un impact économique significatif sur toute la région du sud&quot;
 </ul>
 </section>
 <section id="reference-api">
-<h3>Référence API<a class="headerlink" href="#reference-api" title="Link to this heading"></a></h3>
+<h2>Référence API<a class="headerlink" href="#reference-api" title="Link to this heading"></a></h2>
 <p>La fonctionnalité du chatbot est accessible via ces fonctions principales :</p>
 <dl class="simple">
 <dt><code class="docutils literal notranslate"><span class="pre">render_chatbot_tab()</span></code></dt><dd><p>Point d’entrée principal qui rend l’interface complète du chatbot.</p>
@@ -481,9 +495,9 @@ avec un impact économique significatif sur toute la région du sud&quot;
 <p>Pour des exemples d’implémentation détaillés et des modèles d’utilisation avancés, référez-vous à la documentation du code source et aux commentaires en ligne.</p>
 </section>
 <section id="comment-commencer">
-<h3>Comment Commencer<a class="headerlink" href="#comment-commencer" title="Link to this heading"></a></h3>
+<h2>Comment Commencer<a class="headerlink" href="#comment-commencer" title="Link to this heading"></a></h2>
 <section id="installation">
-<h4>Installation<a class="headerlink" href="#installation" title="Link to this heading"></a></h4>
+<h3>Installation<a class="headerlink" href="#installation" title="Link to this heading"></a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Cloner le dépôt</span>
 git<span class="w"> </span>clone<span class="w"> </span>https://github.com/MA-Zbida/Time-Series-Analysis.git
 <span class="nb">cd</span><span class="w"> </span>Time-Series-Analysis
@@ -491,45 +505,55 @@ git<span class="w"> </span>clone<span class="w"> </span>https://github.com/MA-Zb
 </div>
 </section>
 <section id="lancer-l-application">
-<h4>Lancer l’Application<a class="headerlink" href="#lancer-l-application" title="Link to this heading"></a></h4>
+<h3>Lancer l’Application<a class="headerlink" href="#lancer-l-application" title="Link to this heading"></a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Démarrer l&#39;application Streamlit</span>
-streamlit<span class="w"> </span>run<span class="w"> </span>interface/app.py
+streamlit<span class="w"> </span>run<span class="w"> </span>Interface/app.py
 </pre></div>
 </div>
 <div class="toctree-wrapper compound">
 <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="index2.html">Diagrammes du Système</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="index2.html#diagramme-de-classe">Diagramme de Classe</a></li>
-<li class="toctree-l2"><a class="reference internal" href="index2.html#diagramme-de-sequence">Diagramme de Séquence</a></li>
-<li class="toctree-l2"><a class="reference internal" href="index2.html#diagramme-de-cas-d-utilisation">Diagramme de Cas d’Utilisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index2.html">Diagramme de Classe</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index2.html#diagramme-de-sequence">Diagramme de Séquence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index2.html#diagramme-de-cas-d-utilisation">Diagramme de Cas d’Utilisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index3.html">Gestion des Données avec Padding</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="index3.html#problematique">Problématique</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index3.html#solution-technique-padding-adaptatif">Solution Technique : Padding Adaptatif</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="index3.html">Architecture et Technologies Utilisées</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="index3.html#gestion-des-donnees-avec-padding">Gestion des Données avec Padding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index3.html#parametres-des-evenements">Paramètres des événements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index3.html#fonctions-de-courbe-disponibles">Fonctions de courbe disponibles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index3.html#fonction-principale-de-calcul">Fonction principale de calcul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index3.html#caracteristiques-des-courbes">Caractéristiques des courbes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index3.html#architecture-du-modele-cnn-lstm-avec-mecanisme-d-attention">Architecture du Modèle : CNN-LSTM avec Mécanisme d’Attention</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="index3.html#vue-d-ensemble">Vue d’Ensemble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index3.html#architecture-detaillee">Architecture Détaillée</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="index3.html#gestion-des-variables-exogenes">Gestion des Variables Exogènes</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="index3.html#parametres-des-evenements">Paramètres des événements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="index3.html#fonctions-de-courbe-disponibles">Fonctions de courbe disponibles</a></li>
-<li class="toctree-l2"><a class="reference internal" href="index3.html#fonction-principale-de-calcul">Fonction principale de calcul</a></li>
-<li class="toctree-l2"><a class="reference internal" href="index3.html#caracteristiques-des-courbes">Caractéristiques des courbes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="index3.html#architecture-du-modele-cnn-lstm-avec-mecanisme-d-attention">Architecture du Modèle : CNN-LSTM avec Mécanisme d’Attention</a></li>
-<li class="toctree-l2"><a class="reference internal" href="index3.html#fonction-de-perte-personnalisee">Fonction de Perte Personnalisée</a></li>
-<li class="toctree-l2"><a class="reference internal" href="index3.html#architecture-general">Architecture Général</a></li>
-<li class="toctree-l2"><a class="reference internal" href="index3.html#integration-des-variables-exogenes">Intégration des Variables Exogènes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="index3.html#optimisation-hyperparametrique-avec-optuna">Optimisation Hyperparamétrique avec Optuna</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index3.html#fonction-de-perte-personnalisee">Fonction de Perte Personnalisée</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="index3.html#masked-mse-loss">Masked MSE Loss</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="index3.html#resultats-visuels-et-analyses">Résultats Visuels et Analyses</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="index3.html#visualisations-optuna">Visualisations Optuna</a></li>
-<li class="toctree-l2"><a class="reference internal" href="index3.html#resultats-de-prediction-examples">Résultats de Prédiction (Examples)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index3.html#architecture-general">Architecture Général</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index3.html#integration-des-variables-exogenes">Intégration des Variables Exogènes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index3.html#optimisation-hyperparametrique-avec-optuna">Optimisation Hyperparamétrique avec Optuna</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="index3.html#methodologie-d-optimisation">Méthodologie d’Optimisation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index3.html#espace-de-recherche-explore">Espace de Recherche Exploré</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index3.html#resultats-de-l-optimisation">Résultats de l’Optimisation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index3.html#impact-de-l-optimisation">Impact de l’Optimisation</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="index3.html#conclusion-technique">Conclusion Technique</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index3.html#visualisations-optuna">Visualisations Optuna</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="index3.html#historique-d-optimisation">Historique d’Optimisation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index3.html#importance-des-hyperparametres-examples">Importance des Hyperparamètres (Examples)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="index3.html#resultats-de-prediction-examples">Résultats de Prédiction (Examples)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="index3.html#performance-sur-donnees-de-test">Performance sur Données de Test</a></li>
+</ul>
+</li>
 </ul>
 </div>
-</section>
 </section>
 </section>
 </section>
@@ -538,7 +562,7 @@ streamlit<span class="w"> </span>run<span class="w"> </span>interface/app.py
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="index2.html" class="btn btn-neutral float-right" title="Diagrammes du Système" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="index2.html" class="btn btn-neutral float-right" title="Diagramme de Classe" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

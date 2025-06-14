@@ -1,5 +1,9 @@
-======================
-Diagrammes du Système
+.. raw:: html
+
+   <div style="display: flex; align-items: center; margin-bottom: 20px;">
+     <img src="_static/images/image.png" alt="Logo" width="80" style="margin-right: 20px;">
+     <h1 style="margin: 0;">Diagrammes du Système</h1>
+   </div>
 ======================
 
 Ce document présente les différents diagrammes UML utilisés pour modéliser l'architecture et le comportement du système de prévision économique marocain.

@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Diagrammes du Système &mdash; Morocco forecast 20225 documentation</title>
+  <title>Diagramme de Classe &mdash; Morocco forecast 20225 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
 
@@ -19,8 +19,8 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Architecture et Technologies Utilisées" href="index3.html" />
-    <link rel="prev" title="Prévision de l’Économie Marocaine" href="index.html" /> 
+    <link rel="next" title="Gestion des Données avec Padding" href="index3.html" />
+    <link rel="prev" title="Analyse Avancée de Séries Temporelles avec Influence d’Événements et Intégration NLP" href="index.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -44,16 +44,21 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Diagrammes du Système</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#diagramme-de-classe">Diagramme de Classe</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#diagramme-de-sequence">Diagramme de Séquence</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#diagramme-de-cas-d-utilisation">Diagramme de Cas d’Utilisation</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="index3.html">Architecture et Technologies Utilisées</a></li>
-<li class="toctree-l1"><a class="reference internal" href="index3.html#gestion-des-variables-exogenes">Gestion des Variables Exogènes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="index3.html#resultats-visuels-et-analyses">Résultats Visuels et Analyses</a></li>
-<li class="toctree-l1"><a class="reference internal" href="index3.html#conclusion-technique">Conclusion Technique</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Diagramme de Classe</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#diagramme-de-sequence">Diagramme de Séquence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#diagramme-de-cas-d-utilisation">Diagramme de Cas d’Utilisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index3.html">Gestion des Données avec Padding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index3.html#parametres-des-evenements">Paramètres des événements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index3.html#fonctions-de-courbe-disponibles">Fonctions de courbe disponibles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index3.html#fonction-principale-de-calcul">Fonction principale de calcul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index3.html#caracteristiques-des-courbes">Caractéristiques des courbes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index3.html#architecture-du-modele-cnn-lstm-avec-mecanisme-d-attention">Architecture du Modèle : CNN-LSTM avec Mécanisme d’Attention</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index3.html#fonction-de-perte-personnalisee">Fonction de Perte Personnalisée</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index3.html#architecture-general">Architecture Général</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index3.html#integration-des-variables-exogenes">Intégration des Variables Exogènes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index3.html#optimisation-hyperparametrique-avec-optuna">Optimisation Hyperparamétrique avec Optuna</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index3.html#visualisations-optuna">Visualisations Optuna</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index3.html#resultats-de-prediction-examples">Résultats de Prédiction (Examples)</a></li>
 </ul>
 
         </div>
@@ -70,7 +75,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Diagrammes du Système</li>
+      <li class="breadcrumb-item active">Diagramme de Classe</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/index2.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -80,11 +85,13 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="diagrammes-du-systeme">
-<h1>Diagrammes du Système<a class="headerlink" href="#diagrammes-du-systeme" title="Link to this heading"></a></h1>
+  <div style="display: flex; align-items: center; margin-bottom: 20px;">
+  <img src="_static/images/image.png" alt="Logo" width="80" style="margin-right: 20px;">
+  <h1 style="margin: 0;">Diagrammes du Système</h1>
+</div><hr class="docutils" />
 <p>Ce document présente les différents diagrammes UML utilisés pour modéliser l’architecture et le comportement du système de prévision économique marocain.</p>
 <section id="diagramme-de-classe">
-<h2>Diagramme de Classe<a class="headerlink" href="#diagramme-de-classe" title="Link to this heading"></a></h2>
+<h1>Diagramme de Classe<a class="headerlink" href="#diagramme-de-classe" title="Link to this heading"></a></h1>
 <p>Le diagramme de classe illustre les classes utilisées dans l’interface</p>
 <figure class="align-default" id="id1">
 <a class="reference internal image-reference" href="_static/images/class.png"><img alt="Diagramme de Classe" src="_static/images/class.png" style="width: 100%;" />
@@ -95,7 +102,7 @@
 </figure>
 </section>
 <section id="diagramme-de-sequence">
-<h2>Diagramme de Séquence<a class="headerlink" href="#diagramme-de-sequence" title="Link to this heading"></a></h2>
+<h1>Diagramme de Séquence<a class="headerlink" href="#diagramme-de-sequence" title="Link to this heading"></a></h1>
 <p>Le diagramme de séquence illustre les interactions entre les objets du système dans l’ordre chronologique, mettant en évidence le flux de contrôle entre différents composants lors de l’exécution du processus de prévision.</p>
 <figure class="align-default" id="id2">
 <a class="reference internal image-reference" href="_images/sequence.png"><img alt="Diagramme de Séquence" src="_images/sequence.png" style="width: 100%;" />
@@ -106,7 +113,7 @@
 </figure>
 </section>
 <section id="diagramme-de-cas-d-utilisation">
-<h2>Diagramme de Cas d’Utilisation<a class="headerlink" href="#diagramme-de-cas-d-utilisation" title="Link to this heading"></a></h2>
+<h1>Diagramme de Cas d’Utilisation<a class="headerlink" href="#diagramme-de-cas-d-utilisation" title="Link to this heading"></a></h1>
 <p>Le diagramme de cas d’utilisation présente les interactions entre les utilisateurs et le système, définissant les fonctionnalités offertes et les scénarios d’utilisation possibles.</p>
 <figure class="align-default" id="id3">
 <a class="reference internal image-reference" href="_images/use_case.drawio.png"><img alt="Diagramme de Cas d'Utilisation" src="_images/use_case.drawio.png" style="width: 100%;" />
@@ -116,14 +123,13 @@
 </figcaption>
 </figure>
 </section>
-</section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="index.html" class="btn btn-neutral float-left" title="Prévision de l’Économie Marocaine" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="index3.html" class="btn btn-neutral float-right" title="Architecture et Technologies Utilisées" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="index.html" class="btn btn-neutral float-left" title="Analyse Avancée de Séries Temporelles avec Influence d’Événements et Intégration NLP" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="index3.html" class="btn btn-neutral float-right" title="Gestion des Données avec Padding" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

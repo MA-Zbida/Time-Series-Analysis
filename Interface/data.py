@@ -19,9 +19,6 @@ def monthly_data():
     return ['brent_oil_prices(USD/barrel)',
             'crude_oil_prices(USD/barrel)',
             'daily_natural_gas_prices(USD/MMBtu)']
-
-
-
     
 
 

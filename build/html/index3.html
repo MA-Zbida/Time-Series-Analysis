@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Architecture et Technologies Utilisées &mdash; Morocco forecast 20225 documentation</title>
+  <title>Gestion des Données avec Padding &mdash; Morocco forecast 20225 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
 
@@ -19,7 +19,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="Diagrammes du Système" href="index2.html" /> 
+    <link rel="prev" title="Diagramme de Classe" href="index2.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -43,62 +43,54 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="index2.html">Diagrammes du Système</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Architecture et Technologies Utilisées</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#gestion-des-donnees-avec-padding">Gestion des Données avec Padding</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#problematique">Problématique</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#solution-technique-padding-adaptatif">Solution Technique : Padding Adaptatif</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index2.html">Diagramme de Classe</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index2.html#diagramme-de-sequence">Diagramme de Séquence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index2.html#diagramme-de-cas-d-utilisation">Diagramme de Cas d’Utilisation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Gestion des Données avec Padding</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#problematique">Problématique</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#solution-technique-padding-adaptatif">Solution Technique : Padding Adaptatif</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#gestion-des-variables-exogenes">Gestion des Variables Exogènes</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="#gestion-des-variables-exogenes">Gestion des Variables Exogènes</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#parametres-des-evenements">Paramètres des événements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#fonctions-de-courbe-disponibles">Fonctions de courbe disponibles</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#fonction-principale-de-calcul">Fonction principale de calcul</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#caracteristiques-des-courbes">Caractéristiques des courbes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#architecture-du-modele-cnn-lstm-avec-mecanisme-d-attention">Architecture du Modèle : CNN-LSTM avec Mécanisme d’Attention</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#vue-d-ensemble">Vue d’Ensemble</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#architecture-detaillee">Architecture Détaillée</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#bloc-cnn-multi-couches">Bloc CNN Multi-Couches</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#bloc-lstm-multi-couches">Bloc LSTM Multi-Couches</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#mecanisme-d-attention-personnalise">Mécanisme d’Attention Personnalisé</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#parametres-des-evenements">Paramètres des événements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#fonctions-de-courbe-disponibles">Fonctions de courbe disponibles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#fonction-principale-de-calcul">Fonction principale de calcul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#caracteristiques-des-courbes">Caractéristiques des courbes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#architecture-du-modele-cnn-lstm-avec-mecanisme-d-attention">Architecture du Modèle : CNN-LSTM avec Mécanisme d’Attention</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#vue-d-ensemble">Vue d’Ensemble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#architecture-detaillee">Architecture Détaillée</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#fonction-de-perte-personnalisee">Fonction de Perte Personnalisée</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#masked-mse-loss">Masked MSE Loss</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#architecture-general">Architecture Général</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#integration-des-variables-exogenes">Intégration des Variables Exogènes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#optimisation-hyperparametrique-avec-optuna">Optimisation Hyperparamétrique avec Optuna</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#methodologie-d-optimisation">Méthodologie d’Optimisation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#espace-de-recherche-explore">Espace de Recherche Exploré</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#resultats-de-l-optimisation">Résultats de l’Optimisation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#impact-de-l-optimisation">Impact de l’Optimisation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#resultats-visuels-et-analyses">Résultats Visuels et Analyses</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#fonction-de-perte-personnalisee">Fonction de Perte Personnalisée</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#masked-mse-loss">Masked MSE Loss</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#visualisations-optuna">Visualisations Optuna</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#historique-d-optimisation">Historique d’Optimisation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#importance-des-hyperparametres-examples">Importance des Hyperparamètres (Examples)</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#architecture-general">Architecture Général</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#integration-des-variables-exogenes">Intégration des Variables Exogènes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#optimisation-hyperparametrique-avec-optuna">Optimisation Hyperparamétrique avec Optuna</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#methodologie-d-optimisation">Méthodologie d’Optimisation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#espace-de-recherche-explore">Espace de Recherche Exploré</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#resultats-de-l-optimisation">Résultats de l’Optimisation</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#metriques-de-performance-optimales">Métriques de Performance Optimales</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#analyse-des-essais-d-optimisation">Analyse des Essais d’Optimisation</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#impact-de-l-optimisation">Impact de l’Optimisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#resultats-de-prediction-examples">Résultats de Prédiction (Examples)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#performance-sur-donnees-de-test">Performance sur Données de Test</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#conclusion-technique">Conclusion Technique</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="#resultats-visuels-et-analyses">Résultats Visuels et Analyses</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#visualisations-optuna">Visualisations Optuna</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#historique-d-optimisation">Historique d’Optimisation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#importance-des-hyperparametres-examples">Importance des Hyperparamètres (Examples)</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#resultats-de-prediction-examples">Résultats de Prédiction (Examples)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#performance-sur-donnees-de-test">Performance sur Données de Test</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="#conclusion-technique">Conclusion Technique</a></li>
 </ul>
 
         </div>
@@ -115,7 +107,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Architecture et Technologies Utilisées</li>
+      <li class="breadcrumb-item active">Gestion des Données avec Padding</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/index3.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -125,16 +117,18 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="architecture-et-technologies-utilisees">
-<h1>Architecture et Technologies Utilisées<a class="headerlink" href="#architecture-et-technologies-utilisees" title="Link to this heading"></a></h1>
+  <div style="display: flex; align-items: center; margin-bottom: 20px;">
+  <img src="_static/images/image.png" alt="Logo" width="80" style="margin-right: 20px;">
+  <h1 style="margin: 0;">Architecture et Technologies Utilisées</h1>
+</div><hr class="docutils" />
 <section id="gestion-des-donnees-avec-padding">
-<h2>Gestion des Données avec Padding<a class="headerlink" href="#gestion-des-donnees-avec-padding" title="Link to this heading"></a></h2>
+<h1>Gestion des Données avec Padding<a class="headerlink" href="#gestion-des-donnees-avec-padding" title="Link to this heading"></a></h1>
 <section id="problematique">
-<h3>Problématique<a class="headerlink" href="#problematique" title="Link to this heading"></a></h3>
+<h2>Problématique<a class="headerlink" href="#problematique" title="Link to this heading"></a></h2>
 <p>La prédiction de séries temporelles présente souvent le défi de traiter des séquences de longueurs variables. Pour permettre un traitement par batch efficace avec les réseaux de neurones, il est nécessaire d’uniformiser la taille des entrées.</p>
 </section>
 <section id="solution-technique-padding-adaptatif">
-<h3>Solution Technique : Padding Adaptatif<a class="headerlink" href="#solution-technique-padding-adaptatif" title="Link to this heading"></a></h3>
+<h2>Solution Technique : Padding Adaptatif<a class="headerlink" href="#solution-technique-padding-adaptatif" title="Link to this heading"></a></h2>
 <p>Nous avons implémenté une stratégie de padding sophistiquée qui permet de traiter des séquences de longueurs différentes tout en préservant l’information temporelle cruciale :</p>
 <ul class="simple">
 <li><p><strong>Padding par valeurs nulles</strong> : Les séquences courtes sont complétées avec des valeurs 0.0</p></li>
@@ -142,14 +136,14 @@
 <li><p><strong>Préservation de l’information temporelle</strong> : Le modèle apprend à distinguer les vraies valeurs des valeurs artificielles</p></li>
 </ul>
 <p>Cette approche garantit que le modèle ne soit pas biaisé par les valeurs de padding artificielles lors de l’entraînement.</p>
-</section>
-</section>
-</section>
 <section id="gestion-des-variables-exogenes">
-<h1>Gestion des Variables Exogènes<a class="headerlink" href="#gestion-des-variables-exogenes" title="Link to this heading"></a></h1>
+<h3>Gestion des Variables Exogènes<a class="headerlink" href="#gestion-des-variables-exogenes" title="Link to this heading"></a></h3>
 <p>Cette section décrit la méthode de traitement des variables exogènes dans le modèle. Chaque événement est caractérisé par plusieurs paramètres qui définissent son impact sur le système :</p>
+</section>
+</section>
+</section>
 <section id="parametres-des-evenements">
-<h2>Paramètres des événements<a class="headerlink" href="#parametres-des-evenements" title="Link to this heading"></a></h2>
+<h1>Paramètres des événements<a class="headerlink" href="#parametres-des-evenements" title="Link to this heading"></a></h1>
 <ul class="simple">
 <li><p><strong>Impact</strong> : Nature de l’événement (positif ou négatif)</p></li>
 <li><p><strong>Durée</strong> : Période d’influence en mois</p></li>
@@ -158,7 +152,7 @@
 </ul>
 </section>
 <section id="fonctions-de-courbe-disponibles">
-<h2>Fonctions de courbe disponibles<a class="headerlink" href="#fonctions-de-courbe-disponibles" title="Link to this heading"></a></h2>
+<h1>Fonctions de courbe disponibles<a class="headerlink" href="#fonctions-de-courbe-disponibles" title="Link to this heading"></a></h1>
 <p>Les trois types de courbes implémentées permettent de modéliser différents profils d’impact temporel :</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
@@ -180,7 +174,7 @@
 </div>
 </section>
 <section id="fonction-principale-de-calcul">
-<h2>Fonction principale de calcul<a class="headerlink" href="#fonction-principale-de-calcul" title="Link to this heading"></a></h2>
+<h1>Fonction principale de calcul<a class="headerlink" href="#fonction-principale-de-calcul" title="Link to this heading"></a></h1>
 <p>La fonction <code class="docutils literal notranslate"><span class="pre">event_calc</span></code> applique l’impact d’un événement sur la série temporelle selon les paramètres spécifiés :</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">event_calc</span><span class="p">(</span><span class="n">events_df</span><span class="p">,</span> <span class="n">start_date</span><span class="p">,</span> <span class="n">event_type</span><span class="p">,</span> <span class="n">peak_value</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="n">curve</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -222,7 +216,7 @@
 </div>
 </section>
 <section id="caracteristiques-des-courbes">
-<h2>Caractéristiques des courbes<a class="headerlink" href="#caracteristiques-des-courbes" title="Link to this heading"></a></h2>
+<h1>Caractéristiques des courbes<a class="headerlink" href="#caracteristiques-des-courbes" title="Link to this heading"></a></h1>
 <ul class="simple">
 <li><p><strong>Linéaire</strong> : Décroissance constante de l’impact, appropriée pour des événements dont l’effet diminue progressivement</p></li>
 <li><p><strong>Exponentielle</strong> : Décroissance rapide puis lente, adaptée aux événements à fort impact initial</p></li>
@@ -230,9 +224,9 @@
 </ul>
 </section>
 <section id="architecture-du-modele-cnn-lstm-avec-mecanisme-d-attention">
-<h2>Architecture du Modèle : CNN-LSTM avec Mécanisme d’Attention<a class="headerlink" href="#architecture-du-modele-cnn-lstm-avec-mecanisme-d-attention" title="Link to this heading"></a></h2>
+<h1>Architecture du Modèle : CNN-LSTM avec Mécanisme d’Attention<a class="headerlink" href="#architecture-du-modele-cnn-lstm-avec-mecanisme-d-attention" title="Link to this heading"></a></h1>
 <section id="vue-d-ensemble">
-<h3>Vue d’Ensemble<a class="headerlink" href="#vue-d-ensemble" title="Link to this heading"></a></h3>
+<h2>Vue d’Ensemble<a class="headerlink" href="#vue-d-ensemble" title="Link to this heading"></a></h2>
 <p>Le modèle développé combine trois architectures complémentaires dans une approche hybride innovante :</p>
 <ol class="arabic simple">
 <li><p><strong>Couches Convolutionnelles (CNN)</strong> : Extraction de motifs locaux dans les séries temporelles</p></li>
@@ -241,9 +235,7 @@
 </ol>
 </section>
 <section id="architecture-detaillee">
-<h3>Architecture Détaillée<a class="headerlink" href="#architecture-detaillee" title="Link to this heading"></a></h3>
-<section id="bloc-cnn-multi-couches">
-<h4>Bloc CNN Multi-Couches<a class="headerlink" href="#bloc-cnn-multi-couches" title="Link to this heading"></a></h4>
+<h2>Architecture Détaillée<a class="headerlink" href="#architecture-detaillee" title="Link to this heading"></a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Extraction de caractéristiques locales</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;num_cnn_blocks&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)):</span>
     <span class="n">x</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Conv1D</span><span class="p">(</span><span class="n">filters</span><span class="o">=</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;cnn_filters&#39;</span><span class="p">],</span>
@@ -259,9 +251,6 @@
 <li><p>Réduction de la dimensionnalité tout en préservant l’information spatiale</p></li>
 <li><p>Normalisation par batch pour une convergence stable</p></li>
 </ul>
-</section>
-<section id="bloc-lstm-multi-couches">
-<h4>Bloc LSTM Multi-Couches<a class="headerlink" href="#bloc-lstm-multi-couches" title="Link to this heading"></a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Modélisation des dépendances temporelles</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;num_lstm_blocks&#39;</span><span class="p">]):</span>
     <span class="n">return_sequences</span> <span class="o">=</span> <span class="kc">True</span>  <span class="c1"># Conservation des séquences pour l&#39;attention</span>
@@ -274,9 +263,6 @@
 <li><p>Architecture empilée pour une représentation hiérarchique</p></li>
 <li><p>Maintien des séquences pour le mécanisme d’attention</p></li>
 </ul>
-</section>
-<section id="mecanisme-d-attention-personnalise">
-<h4>Mécanisme d’Attention Personnalisé<a class="headerlink" href="#mecanisme-d-attention-personnalise" title="Link to this heading"></a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calcul des poids d&#39;attention</span>
 <span class="n">attention</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">1</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
 <span class="n">attention</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Activation</span><span class="p">(</span><span class="s1">&#39;softmax&#39;</span><span class="p">)(</span><span class="n">attention</span><span class="p">)</span>
@@ -294,11 +280,10 @@
 </ul>
 </section>
 </section>
-</section>
 <section id="fonction-de-perte-personnalisee">
-<h2>Fonction de Perte Personnalisée<a class="headerlink" href="#fonction-de-perte-personnalisee" title="Link to this heading"></a></h2>
+<h1>Fonction de Perte Personnalisée<a class="headerlink" href="#fonction-de-perte-personnalisee" title="Link to this heading"></a></h1>
 <section id="masked-mse-loss">
-<h3>Masked MSE Loss<a class="headerlink" href="#masked-mse-loss" title="Link to this heading"></a></h3>
+<h2>Masked MSE Loss<a class="headerlink" href="#masked-mse-loss" title="Link to this heading"></a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@register_keras_serializable</span><span class="p">(</span><span class="n">package</span><span class="o">=</span><span class="s1">&#39;my_losses&#39;</span><span class="p">)</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">masked_mse_loss</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">mask_value</span><span class="o">=</span><span class="mf">0.0</span><span class="p">):</span>
     <span class="c1"># Création du masque pour ignorer les valeurs paddées</span>
@@ -323,7 +308,7 @@
 </section>
 </section>
 <section id="architecture-general">
-<h2>Architecture Général<a class="headerlink" href="#architecture-general" title="Link to this heading"></a></h2>
+<h1>Architecture Général<a class="headerlink" href="#architecture-general" title="Link to this heading"></a></h1>
 <figure class="align-center" id="id5">
 <a class="reference internal image-reference" href="_images/architect.png"><img alt="multi CNN + multi LSTM + Attention Mechanism" src="_images/architect.png" style="width: 800px;" />
 </a>
@@ -335,7 +320,7 @@
 </figure>
 </section>
 <section id="integration-des-variables-exogenes">
-<h2>Intégration des Variables Exogènes<a class="headerlink" href="#integration-des-variables-exogenes" title="Link to this heading"></a></h2>
+<h1>Intégration des Variables Exogènes<a class="headerlink" href="#integration-des-variables-exogenes" title="Link to this heading"></a></h1>
 <p>Le modèle intègre également des variables exogènes pour enrichir les prédictions :</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Entrée pour variables externes</span>
 <span class="n">exog_input</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;exog_input&#39;</span><span class="p">)</span>
@@ -345,13 +330,13 @@
 <p>Cette approche permet d’incorporer des informations contextuelles externes qui peuvent influencer les prédictions.</p>
 </section>
 <section id="optimisation-hyperparametrique-avec-optuna">
-<h2>Optimisation Hyperparamétrique avec Optuna<a class="headerlink" href="#optimisation-hyperparametrique-avec-optuna" title="Link to this heading"></a></h2>
+<h1>Optimisation Hyperparamétrique avec Optuna<a class="headerlink" href="#optimisation-hyperparametrique-avec-optuna" title="Link to this heading"></a></h1>
 <section id="methodologie-d-optimisation">
-<h3>Méthodologie d’Optimisation<a class="headerlink" href="#methodologie-d-optimisation" title="Link to this heading"></a></h3>
+<h2>Méthodologie d’Optimisation<a class="headerlink" href="#methodologie-d-optimisation" title="Link to this heading"></a></h2>
 <p>L’optimisation des hyperparamètres a été réalisée avec <strong>Optuna</strong>, un framework d’optimisation bayésienne de pointe. Cette approche permet une exploration intelligente de l’espace des hyperparamètres.</p>
 </section>
 <section id="espace-de-recherche-explore">
-<h3>Espace de Recherche Exploré<a class="headerlink" href="#espace-de-recherche-explore" title="Link to this heading"></a></h3>
+<h2>Espace de Recherche Exploré<a class="headerlink" href="#espace-de-recherche-explore" title="Link to this heading"></a></h2>
 <p>Les hyperparamètres optimisés incluent :</p>
 <p><strong>Architecture CNN</strong> :</p>
 <ul class="simple">
@@ -378,9 +363,7 @@
 </ul>
 </section>
 <section id="resultats-de-l-optimisation">
-<h3>Résultats de l’Optimisation<a class="headerlink" href="#resultats-de-l-optimisation" title="Link to this heading"></a></h3>
-<section id="metriques-de-performance-optimales">
-<h4>Métriques de Performance Optimales<a class="headerlink" href="#metriques-de-performance-optimales" title="Link to this heading"></a></h4>
+<h2>Résultats de l’Optimisation<a class="headerlink" href="#resultats-de-l-optimisation" title="Link to this heading"></a></h2>
 <p>Les résultats détaillés de l’optimisation Optuna révèlent des performances exceptionnelles :</p>
 <p><strong>Configuration Optimale Identifiée</strong> :</p>
 <ul class="simple">
@@ -395,9 +378,6 @@
 <li><p><strong>Temps d’entraînement</strong> : Efficacité computationnelle optimisée</p></li>
 <li><p><strong>Précision de prédiction</strong> : Amélioration significative par rapport aux baselines</p></li>
 </ul>
-</section>
-<section id="analyse-des-essais-d-optimisation">
-<h4>Analyse des Essais d’Optimisation<a class="headerlink" href="#analyse-des-essais-d-optimisation" title="Link to this heading"></a></h4>
 <p>L’exploration de l’espace des hyperparamètres a révélé :</p>
 <ul class="simple">
 <li><p><strong>Sensibilité des paramètres</strong> : Identification des hyperparamètres les plus critiques</p></li>
@@ -406,9 +386,8 @@
 <li><p><strong>Trade-offs</strong> : Équilibre optimal entre précision et complexité computationnelle</p></li>
 </ul>
 </section>
-</section>
 <section id="impact-de-l-optimisation">
-<h3>Impact de l’Optimisation<a class="headerlink" href="#impact-de-l-optimisation" title="Link to this heading"></a></h3>
+<h2>Impact de l’Optimisation<a class="headerlink" href="#impact-de-l-optimisation" title="Link to this heading"></a></h2>
 <p>L’utilisation d’Optuna a permis :</p>
 <ol class="arabic simple">
 <li><p><strong>Amélioration des performances</strong> : Réduction significative de l’erreur de prédiction</p></li>
@@ -416,15 +395,15 @@
 <li><p><strong>Reproductibilité</strong> : Documentation complète des configurations testées</p></li>
 <li><p><strong>Insights</strong> : Compréhension approfondie du comportement du modèle</p></li>
 </ol>
-</section>
-</section>
-</section>
 <section id="resultats-visuels-et-analyses">
-<h1>Résultats Visuels et Analyses<a class="headerlink" href="#resultats-visuels-et-analyses" title="Link to this heading"></a></h1>
+<h3>Résultats Visuels et Analyses<a class="headerlink" href="#resultats-visuels-et-analyses" title="Link to this heading"></a></h3>
+</section>
+</section>
+</section>
 <section id="visualisations-optuna">
-<h2>Visualisations Optuna<a class="headerlink" href="#visualisations-optuna" title="Link to this heading"></a></h2>
+<h1>Visualisations Optuna<a class="headerlink" href="#visualisations-optuna" title="Link to this heading"></a></h1>
 <section id="historique-d-optimisation">
-<h3>Historique d’Optimisation<a class="headerlink" href="#historique-d-optimisation" title="Link to this heading"></a></h3>
+<h2>Historique d’Optimisation<a class="headerlink" href="#historique-d-optimisation" title="Link to this heading"></a></h2>
 <figure class="align-center" id="id6">
 <a class="reference internal image-reference" href="_images/optuna_optimization_history.png"><img alt="Historique d'optimisation Optuna" src="_images/optuna_optimization_history.png" style="width: 800px;" />
 </a>
@@ -436,7 +415,7 @@ illustrant l’efficacité de l’algorithme d’optimisation bayésienne.</span
 </figure>
 </section>
 <section id="importance-des-hyperparametres-examples">
-<h3>Importance des Hyperparamètres (Examples)<a class="headerlink" href="#importance-des-hyperparametres-examples" title="Link to this heading"></a></h3>
+<h2>Importance des Hyperparamètres (Examples)<a class="headerlink" href="#importance-des-hyperparametres-examples" title="Link to this heading"></a></h2>
 <figure class="align-center" id="id7">
 <a class="reference internal image-reference" href="_images/hyperparam_eco1.png"><img alt="Importance des hyperparamètres pour eco1_model" src="_images/hyperparam_eco1.png" style="width: 800px;" />
 </a>
@@ -458,9 +437,9 @@ du modèle, guidant ainsi les futures optimisations.</span><a class="headerlink"
 </section>
 </section>
 <section id="resultats-de-prediction-examples">
-<h2>Résultats de Prédiction (Examples)<a class="headerlink" href="#resultats-de-prediction-examples" title="Link to this heading"></a></h2>
+<h1>Résultats de Prédiction (Examples)<a class="headerlink" href="#resultats-de-prediction-examples" title="Link to this heading"></a></h1>
 <section id="performance-sur-donnees-de-test">
-<h3>Performance sur Données de Test<a class="headerlink" href="#performance-sur-donnees-de-test" title="Link to this heading"></a></h3>
+<h2>Performance sur Données de Test<a class="headerlink" href="#performance-sur-donnees-de-test" title="Link to this heading"></a></h2>
 <figure class="align-center" id="id9">
 <a class="reference internal image-reference" href="_images/predictions_vs_actual.png"><img alt="Prédictions vs valeurs réelles" src="_images/predictions_vs_actual.png" style="width: 1000px;" />
 </a>
@@ -479,21 +458,20 @@ valeurs réelles (ligne bleue) sur l’ensemble de test. La proximité des courb
 démontre la qualité des prédictions obtenues.</span><a class="headerlink" href="#id10" title="Link to this image"></a></p>
 </figcaption>
 </figure>
-</section>
-</section>
-</section>
 <section id="conclusion-technique">
-<h1>Conclusion Technique<a class="headerlink" href="#conclusion-technique" title="Link to this heading"></a></h1>
+<h3>Conclusion Technique<a class="headerlink" href="#conclusion-technique" title="Link to this heading"></a></h3>
 <p>Cette architecture hybride CNN-LSTM avec attention, combinée à une stratégie de padding intelligente et une optimisation bayésienne des hyperparamètres, représente une approche state-of-the-art pour la prédiction de séries temporelles.</p>
 <p>L’intégration de toutes ces technologies permet d’obtenir des performances prédictives exceptionnelles tout en maintenant une robustesse face aux variations de longueur des séquences d’entrée. Les résultats visuels présentés confirment l’efficacité de cette approche et fournissent des insights précieux sur le comportement du modèle et la qualité des prédictions obtenues.</p>
 <p>Les analyses d’attention révèlent également la capacité du modèle à identifier automatiquement les patterns temporels les plus pertinents, démontrant ainsi l’intérêt du mécanisme d’attention dans le contexte de la prédiction de séries temporelles complexes.</p>
+</section>
+</section>
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="index2.html" class="btn btn-neutral float-left" title="Diagrammes du Système" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="index2.html" class="btn btn-neutral float-left" title="Diagramme de Classe" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>

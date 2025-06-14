@@ -2,10 +2,10 @@ import streamlit as st
 from datetime import datetime
 import json
 import random
-
+from PIL import Image
 # Événements démonstratifs organisés par secteurs au Maroc
 DEMO_EVENTS_BY_SECTOR = {
-    "🏗️ Infrastructure & Transport": [
+    " Infrastructure & Transport": [
         {
             "Date": "2030-06-15",
             "Event": "Inauguration LGV Casablanca-Marrakech",
@@ -34,7 +34,7 @@ DEMO_EVENTS_BY_SECTOR = {
             "Description": "Extension de l'aéroport d'Agadir"
         }
     ],
-    "⚡ Énergie & Environnement": [
+    " Énergie & Environnement": [
         {
             "Date": "2027-09-01",
             "Event": "Complexe Solaire Noor Midelt",
@@ -63,7 +63,7 @@ DEMO_EVENTS_BY_SECTOR = {
             "Description": "Nouvelle station de dessalement"
         }
     ],
-    "🏭 Industrie & Manufacturing": [
+    " Industrie & Manufacturing": [
         {
             "Date": "2029-07-01",
             "Event": "Cité Mohammed VI Tanger Tech",
@@ -92,7 +92,7 @@ DEMO_EVENTS_BY_SECTOR = {
             "Description": "Nouveau hub logistique près de Casablanca"
         }
     ],
-    "🌾 Agriculture & Agroalimentaire": [
+    " Agriculture & Agroalimentaire": [
         {
             "Date": "2027-02-01",
             "Event": "Plan Maroc Vert 2030",
@@ -121,7 +121,7 @@ DEMO_EVENTS_BY_SECTOR = {
             "Description": "Extension du barrage pour l'irrigation"
         }
     ],
-    "🏖️ Tourisme & Culture": [
+    " Tourisme & Culture": [
         {
             "Date": "2030-06-13",
             "Event": "Coupe du Monde FIFA 2030",
@@ -150,7 +150,7 @@ DEMO_EVENTS_BY_SECTOR = {
             "Description": "Nouvelle station touristique"
         }
     ],
-    "🏥 Santé & Éducation": [
+    " Santé & Éducation": [
         {
             "Date": "2027-09-01",
             "Event": "Cité Médicale Casablanca",
@@ -179,7 +179,7 @@ DEMO_EVENTS_BY_SECTOR = {
             "Description": "Centres de formation dans tout le pays"
         }
     ],
-    "📱 Digital & Technologies": [
+    " Digital & Technologies": [
         {
             "Date": "2027-06-01",
             "Event": "Maroc Digital 2030",
@@ -208,7 +208,7 @@ DEMO_EVENTS_BY_SECTOR = {
             "Description": "Déploiement national de la 5G"
         }
     ],
-    "💼 Économie & Finance": [
+    " Économie & Finance": [
         {
             "Date": "2027-01-01",
             "Event": "Casablanca Finance City 2030",
@@ -237,7 +237,7 @@ DEMO_EVENTS_BY_SECTOR = {
             "Description": "Création du fonds souverain"
         }
     ],
-    "⚠️ Risques & Défis": [
+    " Risques & Défis": [
         {
             "Date": "2028-07-15",
             "Event": "Sécheresse Prolongée",
@@ -286,10 +286,16 @@ def filter_events_by_period(start_year, end_year):
 def render_sidebar():
     """Rendu de la sidebar avec configuration et sélection granulaire d'événements"""
     with st.sidebar:
-        st.markdown("### ⚙️ Configuration")
+        
+        # Load image from local file
+        image = Image.open("ui/logo.png")
+        image = image.resize((1000, 2000))
+        # Display centered image in the sidebar
+        st.sidebar.image(image, use_container_width=True)
+        st.markdown("###  Configuration")
         
         # Période de prévision
-        st.markdown("#### 📅 Forecast Period")
+        st.markdown("####  Forecast Period")
         start_year = 2023
         end_year = st.slider(
             "End Year", 
@@ -308,12 +314,12 @@ def render_sidebar():
         
         # Calculer les événements disponibles dans la période
         available_events = filter_events_by_period(start_year, end_year)
-        st.info(f"📊 {len(available_events)} events available in period {start_year}-{end_year}")
+        st.info(f" {len(available_events)} events available in period {start_year}-{end_year}")
         
         st.markdown("---")
         
         # Sélection granulaire des événements démonstratifs
-        st.markdown("#### 🎯 Event Selection Methods")
+        st.markdown("####  Event Selection Methods")
         
         # Initialisation de la session state pour les événements sélectionnés
         if 'selected_demo_events' not in st.session_state:
@@ -353,7 +359,7 @@ def render_sidebar():
                                 default_checked = st.session_state.selected_demo_events[event_key]
                             
                             is_selected = st.checkbox(
-                                f"📅 {event['Date'][:4]} - {event['Event']}",
+                                f" {event['Date'][:4]} - {event['Event']}",
                                 value=default_checked if select_all_sector else st.session_state.selected_demo_events.get(event_key, False),
                                 key=event_key,
                                 help=f"Type: {event['Type']} | Peak: {event['Peak']} | Duration: {event['Duration']} months\n{event['Description']}"
@@ -368,13 +374,13 @@ def render_sidebar():
                         
                         # Affichage du nombre d'événements sélectionnés dans ce secteur
                         if sector_selected_events:
-                            st.success(f"✅ {len(sector_selected_events)} events selected")
+                            st.success(f" {len(sector_selected_events)} events selected")
                         else:
                             st.info("No events selected")
             
             # Résumé de la sélection
             if selected_events_for_loading:
-                st.markdown("#### 📊 Selection Summary")
+                st.markdown("####  Selection Summary")
                 
                 # Grouper par secteur pour l'affichage
                 summary_by_sector = {}
@@ -394,7 +400,7 @@ def render_sidebar():
                 st.write(f"**Total**: {len(selected_events_for_loading)} events")
                 
                 # Bouton pour charger les événements sélectionnés
-                if st.button("📥 Load Selected Events", use_container_width=True, key="load_granular_events"):
+                if st.button(" Load Selected Events", use_container_width=True, key="load_granular_events"):
                     st.session_state.events_data = selected_events_for_loading
                     st.success(f"Loaded {len(selected_events_for_loading)} events!")
                     st.rerun()
@@ -403,7 +409,7 @@ def render_sidebar():
         
         elif selection_mode == "Random Selection":
             # Mode de sélection aléatoire intelligent
-            st.markdown("🎲 **Smart Random Selection**")
+            st.markdown(" **Smart Random Selection**")
             
             if available_events:
                 # Configuration de la sélection aléatoire
@@ -457,7 +463,7 @@ def render_sidebar():
                             filtered_for_random.append(event)
                 
                 # Affichage des statistiques de filtrage
-                st.info(f"📊 {len(filtered_for_random)} events match your criteria")
+                st.info(f" {len(filtered_for_random)} events match your criteria")
                 
                 if filtered_for_random:
                     # Aperçu de la distribution par secteur
@@ -466,7 +472,7 @@ def render_sidebar():
                         sector = event.get('Sector', None)
                         sector_distribution[sector] = sector_distribution.get(sector, 0) + 1
                     
-                    with st.expander("📈 Available Distribution", expanded=False):
+                    with st.expander(" Available Distribution", expanded=False):
                         for sector, count in sorted(sector_distribution.items()):
                             st.write(f"**{sector}**: {count} events")
                     
@@ -474,7 +480,7 @@ def render_sidebar():
                     col1, col2 = st.columns(2)
                     
                     with col1:
-                        if st.button("🎲 Generate Random Selection", use_container_width=True, key="generate_random"):
+                        if st.button(" Generate Random Selection", use_container_width=True, key="generate_random"):
                             # Logique de sélection aléatoire
                             if balance_selection and len(selected_sectors_for_random) > 1:
                                 # Sélection équilibrée par secteur
@@ -516,7 +522,7 @@ def render_sidebar():
                             
                             # Stocker la sélection aléatoire
                             st.session_state.random_selection = selected_random_events
-                            st.success(f"🎯 Selected {len(selected_random_events)} random events!")
+                            st.success(f" Selected {len(selected_random_events)} random events!")
                             st.rerun()
                     
                     with col2:
@@ -527,7 +533,7 @@ def render_sidebar():
                     
                     # Afficher la sélection aléatoire actuelle
                     if hasattr(st.session_state, 'random_selection') and st.session_state.random_selection:
-                        st.markdown("#### 🎯 Current Random Selection")
+                        st.markdown("####  Current Random Selection")
                         
                         # Statistiques de la sélection
                         selection_stats = {}
@@ -544,7 +550,7 @@ def render_sidebar():
                         st.caption(f"Distribution: {stats_text}")
                         
                         # Liste des événements sélectionnés
-                        with st.expander("📋 View Selected Events", expanded=False):
+                        with st.expander(" View Selected Events", expanded=False):
                             for i, event in enumerate(st.session_state.random_selection, 1):
                                 type_icon = "✅" if event['Type'] == "Good" else "⚠️"
                                 st.write(f"{i}. {type_icon} **{event['Event']}** ({event['Date'][:4]})")
@@ -552,7 +558,7 @@ def render_sidebar():
 
                         
                         # Bouton pour charger la sélection aléatoire
-                        if st.button("📥 Load Random Selection", use_container_width=True, key="load_random_selection"):
+                        if st.button(" Load Random Selection", use_container_width=True, key="load_random_selection"):
                             st.session_state.events_data = st.session_state.random_selection
                             st.success(f"Loaded {len(st.session_state.random_selection)} randomly selected events!")
                             st.rerun()
@@ -564,12 +570,12 @@ def render_sidebar():
         st.markdown("---")
         
         # Actions rapides
-        st.markdown("#### ⚡ Quick Actions")
+        st.markdown("####  Quick Actions")
         
         col1, col2 = st.columns(2)
         
         with col1:
-            if st.button("🔄 Reset Events", use_container_width=True, key="reset_events"):
+            if st.button(" Reset Events", use_container_width=True, key="reset_events"):
                 st.session_state.events_data = []
                 st.session_state.selected_demo_events = {}
                 if hasattr(st.session_state, 'random_selection'):
@@ -578,13 +584,13 @@ def render_sidebar():
                 st.rerun()
         
         with col2:
-            if st.button("🌍 Load ALL", use_container_width=True, key="load_all_events"):
+            if st.button(" Load ALL", use_container_width=True, key="load_all_events"):
                 st.session_state.events_data = available_events
                 st.success(f"Loaded {len(available_events)} events from period!")
                 st.rerun()
         
         # Bouton pour clear la sélection
-        if st.button("🧹 Clear Selection", use_container_width=True, key="clear_selection"):
+        if st.button(" Clear Selection", use_container_width=True, key="clear_selection"):
             st.session_state.selected_demo_events = {}
             if hasattr(st.session_state, 'random_selection'):
                 del st.session_state.random_selection
@@ -594,7 +600,7 @@ def render_sidebar():
         st.markdown("---")
         
         # Status de session
-        st.markdown("#### 📊 Session Status")
+        st.markdown("####  Session Status")
         
         status_data = {
             "Events": len(st.session_state.events_data),
@@ -606,7 +612,7 @@ def render_sidebar():
             st.write(f"**{key}:** {value}")
         
         # Simulation status
-        sim_status = "✅ Ready" if st.session_state.simulation_results is not None else "⏳ Pending"
+        sim_status = " Ready" if st.session_state.simulation_results is not None else " Pending"
         st.write(f"**Simulation:** {sim_status}")
         
         # Affichage des secteurs actifs
@@ -633,7 +639,7 @@ def render_sidebar():
         st.markdown("---")
         
         # Export rapide
-        if st.button("📤 Export Session", use_container_width=True, key="export_session"):
+        if st.button(" Export Session", use_container_width=True, key="export_session"):
             session_data = {
                 "timestamp": datetime.now().isoformat(),
                 "forecast_period": {
@@ -649,7 +655,7 @@ def render_sidebar():
             }
             
             st.download_button(
-                label="💾 Download JSON",
+                label=" Download JSON",
                 data=json.dumps(session_data, indent=2),
                 file_name=f"morocco_forecast_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json",
                 mime="application/json"

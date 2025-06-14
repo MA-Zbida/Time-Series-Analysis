@@ -14,7 +14,7 @@ from curves import event_calc
 
 def render_simulation_tab(end_year):
     """Rendu de l'onglet simulation avec tous les résultats et visualisations"""
-    st.markdown("### 🔮 Economic Simulation Results")
+    st.markdown("###  Economic Simulation Results")
     
     # Bouton de simulation
     col1, col2 = st.columns([3, 1])
@@ -23,7 +23,7 @@ def render_simulation_tab(end_year):
     
     with col2:
         simulate_button = st.button(
-            "🚀 Lancer la Simulation", 
+            " Lancer la Simulation", 
             type="primary",
             help="Démarrer la simulation d'impact économique",
             use_container_width=True
@@ -42,12 +42,12 @@ def _handle_simulation(end_year):
     if not st.session_state.events_data or not st.session_state.selected_indicators:
         st.markdown("""
         <div class="status-warning">
-            ⚠️ Veuillez configurer au moins un événement et sélectionner des indicateurs avant de lancer la simulation
+             Veuillez configurer au moins un événement et sélectionner des indicateurs avant de lancer la simulation
         </div>
         """, unsafe_allow_html=True)
         return
     
-    with st.spinner("🔄 Simulation en cours..."):
+    with st.spinner(" Simulation en cours..."):
         try:
             # Chargement et validation des données
             raw_data = load_data()
@@ -65,12 +65,12 @@ def _handle_simulation(end_year):
             elif isinstance(raw_data, pd.DataFrame):
                 df = raw_data
             else:
-                st.error("❌ Format de données non supporté")
+                st.error(" Format de données non supporté")
                 return
             
             # Validation du DataFrame
             if df.empty:
-                st.warning("⚠️ Les données chargées sont vides. Génération de données de démonstration...")
+                st.warning(" Les données chargées sont vides. Génération de données de démonstration...")
                 df = _generate_demo_base_data()
             
             # Création des données exogènes
@@ -90,7 +90,7 @@ def _handle_simulation(end_year):
                               event["Curve"]
                     )
                 except Exception as event_error:
-                    st.warning(f"⚠️ Erreur lors du traitement de l'événement {event.get('Event', 'Non nommé')}: {event_error}")
+                    st.warning(f" Erreur lors du traitement de l'événement {event.get('Event', 'Non nommé')}: {event_error}")
             
             # Tentative de prévision réelle
             try:
@@ -126,19 +126,19 @@ def _handle_simulation(end_year):
                     raise ValueError("Les prédictions sont vides")
                 
                 st.session_state.simulation_results = preds_df
-                st.success("✅ Simulation terminée avec succès!")
+                st.success(" Simulation terminée avec succès!")
                 
             except Exception as model_error:
-                st.warning(f"⚠️ Modèle non disponible: {model_error}. Génération de données de démonstration...")
+                st.warning(f" Modèle non disponible: {model_error}. Génération de données de démonstration...")
                 
                 # Simulation de démonstration
                 preds_df = _generate_demo_simulation(start_year, end_year, exog_data)
                 st.session_state.simulation_results = preds_df
-                st.info("ℹ️ Données de démonstration générées pour la visualisation")
+                st.info(" Données de démonstration générées pour la visualisation")
             
         except Exception as e:
-            st.error(f"❌ Erreur durant la simulation: {str(e)}")
-            st.error("🔧 Tentative de génération de données de démonstration...")
+            st.error(f" Erreur durant la simulation: {str(e)}")
+            st.error(" Tentative de génération de données de démonstration...")
             
             # Fallback complet
             try:
@@ -149,9 +149,9 @@ def _handle_simulation(end_year):
                 
                 preds_df = _generate_demo_simulation(start_year, end_year, exog_data)
                 st.session_state.simulation_results = preds_df
-                st.warning("⚠️ Simulation de secours activée")
+                st.warning(" Simulation de secours activée")
             except Exception as fallback_error:
-                st.error(f"❌ Échec complet de la simulation: {fallback_error}")
+                st.error(f" Échec complet de la simulation: {fallback_error}")
 
 def _generate_demo_base_data():
     """Génère des données de base pour la démonstration"""
@@ -232,16 +232,16 @@ def _display_simulation_results(end_year):
     
     # Validation des données
     if preds_df is None or preds_df.empty:
-        st.error("❌ Aucun résultat de simulation à afficher")
+        st.error(" Aucun résultat de simulation à afficher")
         return
     
-    st.markdown("### 📊 Résultats de la Simulation")
+    st.markdown("###  Résultats de la Simulation")
     
     # Métriques de résultats
     _display_result_metrics(preds_df)
     
     # Tableau des résultats
-    st.markdown("#### 📋 Résultats Détaillés")
+    st.markdown("####  Résultats Détaillés")
     with st.expander("Voir les données brutes", expanded=False):
         st.dataframe(preds_df, use_container_width=True)
     
@@ -271,12 +271,12 @@ def _display_result_metrics(preds_df):
 
 def _display_interactive_charts(preds_df):
     """Affiche les graphiques interactifs pour chaque indicateur"""
-    st.markdown("#### 📈 Visualisations Interactives")
+    st.markdown("####  Visualisations Interactives")
     
     indicator_columns = [col for col in preds_df.columns if col != 'date']
     
     if not indicator_columns:
-        st.error("❌ Aucun indicateur trouvé dans les résultats")
+        st.error(" Aucun indicateur trouvé dans les résultats")
         return
     
     # Sélecteur d'indicateur pour affichage
@@ -341,7 +341,7 @@ def _create_indicator_chart(preds_df, indicator):
                 fig.add_annotation(
                     x=event_date,
                     y=event_y,
-                    text=f"📅 {event.get('Event', f'Événement {i+1}')}",
+                    text=f" {event.get('Event', f'Événement {i+1}')}",
                     showarrow=True,
                     arrowhead=2,
                     arrowcolor=color,
@@ -385,11 +385,11 @@ def _display_indicator_stats(indicator, preds_df):
             with col_stat4:
                 st.metric("Maximum", f"{max_val:.2f}")
         except Exception as stats_error:
-            st.error(f"❌ Erreur lors du calcul des statistiques: {stats_error}")
+            st.error(f" Erreur lors du calcul des statistiques: {stats_error}")
 
 def _display_download_options(preds_df, end_year):
     """Affiche les options de téléchargement des données"""
-    st.markdown("#### 💾 Téléchargement des Données")
+    st.markdown("####  Téléchargement des Données")
     
     col_csv, col_json, col_excel = st.columns(3)
     start_year = 2023
@@ -398,7 +398,7 @@ def _display_download_options(preds_df, end_year):
         try:
             csv = preds_df.to_csv(index=False)
             st.download_button(
-                label="📄 Télécharger CSV",
+                label=" Télécharger CSV",
                 data=csv,
                 file_name=f"simulation_economique_{start_year}_{end_year}.csv",
                 mime="text/csv"
@@ -410,7 +410,7 @@ def _display_download_options(preds_df, end_year):
         try:
             json_data = preds_df.to_json(orient='records', date_format='iso')
             st.download_button(
-                label="📋 Télécharger JSON",
+                label=" Télécharger JSON",
                 data=json_data,
                 file_name=f"simulation_economique_{start_year}_{end_year}.json",
                 mime="application/json"
@@ -422,7 +422,7 @@ def _display_download_options(preds_df, end_year):
         try:
             excel_buffer = _create_excel_export(preds_df, start_year, end_year)
             st.download_button(
-                label="📊 Télécharger Excel",
+                label=" Télécharger Excel",
                 data=excel_buffer.getvalue(),
                 file_name=f"simulation_economique_{start_year}_{end_year}.xlsx",
                 mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
@@ -471,7 +471,7 @@ def _create_excel_export(preds_df, start_year, end_year):
 
 def _display_comparison_chart(preds_df):
     """Affiche le graphique de comparaison globale"""
-    st.markdown("#### 🔄 Comparaison Globale des Indicateurs")
+    st.markdown("####  Comparaison Globale des Indicateurs")
     
     indicator_columns = [col for col in preds_df.columns if col != 'date']
     
@@ -572,18 +572,18 @@ def _display_comparison_chart(preds_df):
         _display_comparison_chart_download(fig_comparison)
         
     except Exception as comparison_error:
-        st.error(f"❌ Erreur lors de la création du graphique de comparaison: {comparison_error}")
+        st.error(f" Erreur lors de la création du graphique de comparaison: {comparison_error}")
 
 def _display_comparison_chart_download(fig_comparison):
     """Affiche l'option de téléchargement du graphique de comparaison"""
     col_download, col_info = st.columns([1, 3])
     
     with col_download:
-        if st.button("📥 Télécharger Graphique", key="download_comparison"):
+        if st.button(" Télécharger Graphique", key="download_comparison"):
             try:
                 img_bytes = fig_comparison.to_image(format="png", width=1400, height=800)
                 st.download_button(
-                    label="💾 PNG",
+                    label=" PNG",
                     data=img_bytes,
                     file_name="comparaison_indicateurs.png",
                     mime="image/png",
@@ -594,7 +594,7 @@ def _display_comparison_chart_download(fig_comparison):
                 # Fallback vers HTML
                 html_str = fig_comparison.to_html()
                 st.download_button(
-                    label="📄 HTML",
+                    label=" HTML",
                     data=html_str,
                     file_name="comparaison_indicateurs.html",
                     mime="text/html",
@@ -602,7 +602,7 @@ def _display_comparison_chart_download(fig_comparison):
                 )
     
     with col_info:
-        st.info("💡 Utilisez les contrôles de zoom et de pan pour explorer le graphique en détail.")
+        st.info(" Utilisez les contrôles de zoom et de pan pour explorer le graphique en détail.")
 
 def get_simulation_summary():
     """Retourne un résumé de la simulation actuelle"""

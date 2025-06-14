@@ -14,7 +14,6 @@ from ui.styles import load_custom_css
 # Configuration de la page
 st.set_page_config(
     page_title="Economic Impact Simulator",
-    page_icon="📊",
     layout="wide",
     initial_sidebar_state="expanded"
 )
@@ -40,7 +39,7 @@ def main():
     # En-tête principal
     st.markdown("""
     <div class="main-header">
-        <h1>📊 Economic Impact Simulator</h1>
+        <h1> Economic Impact Simulator</h1>
         <p>Advanced Economic Forecasting & Scenario Analysis</p>
     </div>
     """, unsafe_allow_html=True)
@@ -50,10 +49,10 @@ def main():
     
     # Tabs principales
     tab1, tab2, tab3, tab4 = st.tabs([
-        "🤖 AI Assistant", 
-        "📊 Indicators", 
-        "🔮 Simulation", 
-        "📋 Overview"
+        " AI Assistant", 
+        " Indicators", 
+        " Simulation", 
+        " Overview"
     ])
     
     with tab1:

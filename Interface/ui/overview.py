@@ -5,28 +5,28 @@ from datetime import datetime
 def render_overview_tab():
     """Rendu de l'onglet Overview avec résumé des données"""
     
-    st.markdown("## 📋 Session Overview")
+    st.markdown("##  Session Overview")
     
     # Métriques principales
     col1, col2, col3, col4 = st.columns(4)
     
     with col1:
         st.metric(
-            "📅 Events Loaded", 
+            " Events Loaded", 
             len(st.session_state.events_data),
             help="Number of events in the current session"
         )
     
     with col2:
         st.metric(
-            "📊 Indicators Selected", 
+            " Indicators Selected", 
             len(st.session_state.selected_indicators),
             help="Number of economic indicators selected"
         )
     
     with col3:
         st.metric(
-            "💬 Chat Messages", 
+            " Chat Messages", 
             len(st.session_state.chat_history),
             help="Number of messages in chat history"
         )
@@ -34,7 +34,7 @@ def render_overview_tab():
     with col4:
         simulation_status = "Ready" if st.session_state.simulation_results is not None else "Pending"
         st.metric(
-            "🔮 Simulation Status", 
+            " Simulation Status", 
             simulation_status,
             help="Current simulation status"
         )
@@ -43,7 +43,7 @@ def render_overview_tab():
     
     # Détails des événements
     if st.session_state.events_data:
-        st.markdown("### 📋 Events Summary")
+        st.markdown("###  Events Summary")
         
         # Conversion en DataFrame pour affichage
         events_df = pd.DataFrame(st.session_state.events_data)
@@ -52,7 +52,7 @@ def render_overview_tab():
         col1, col2 = st.columns(2)
         
         with col1:
-            st.markdown("#### 📊 Event Statistics")
+            st.markdown("####  Event Statistics")
             
             # Statistiques par type
             if 'Type' in events_df.columns:
@@ -66,10 +66,10 @@ def render_overview_tab():
                 st.markdown("**Curve Types:**")
                 curve_counts = events_df['Curve'].value_counts()
                 for curve, count in curve_counts.items():
-                    st.write(f"📈 {curve}: {count}")
+                    st.write(f" {curve}: {count}")
         
         with col2:
-            st.markdown("#### 📅 Timeline Overview")
+            st.markdown("####  Timeline Overview")
             
             # Période couverte
             if 'Date' in events_df.columns:
@@ -85,12 +85,12 @@ def render_overview_tab():
                 yearly_counts = dates.dt.year.value_counts().sort_index()
                 st.markdown("**Events by Year:**")
                 for year, count in yearly_counts.items():
-                    st.write(f"📅 {year}: {count} events")
+                    st.write(f" {year}: {count} events")
         
         st.markdown("---")
         
         # Tableau détaillé des événements
-        st.markdown("### 📋 Detailed Events Table")
+        st.markdown("###  Detailed Events Table")
         
         # Configuration d'affichage
         display_columns = st.multiselect(
@@ -127,7 +127,7 @@ def render_overview_tab():
                 with col1:
                     csv_data = filtered_df[display_columns].to_csv(index=False)
                     st.download_button(
-                        label="📥 Download as CSV",
+                        label=" Download as CSV",
                         data=csv_data,
                         file_name=f"events_summary_{datetime.now().strftime('%Y%m%d_%H%M%S')}.csv",
                         mime="text/csv"
@@ -136,7 +136,7 @@ def render_overview_tab():
                 with col2:
                     json_data = filtered_df[display_columns].to_json(orient='records', indent=2)
                     st.download_button(
-                        label="📥 Download as JSON",
+                        label=" Download as JSON",
                         data=json_data,
                         file_name=f"events_summary_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json",
                         mime="application/json"
@@ -153,7 +153,7 @@ def render_overview_tab():
     
     # Informations sur les indicateurs
     if st.session_state.selected_indicators:
-        st.markdown("### 📊 Selected Indicators")
+        st.markdown("###  Selected Indicators")
         
         for i, indicator in enumerate(st.session_state.selected_indicators, 1):
             st.write(f"{i}. **{indicator}**")
@@ -162,7 +162,7 @@ def render_overview_tab():
     
     # Résultats de simulation
     if st.session_state.simulation_results is not None:
-        st.markdown("### 🔮 Simulation Results Summary")
+        st.markdown("###  Simulation Results Summary")
         st.success("Simulation completed successfully!")
         
         # Vous pouvez ajouter ici un résumé des résultats de simulation
@@ -174,7 +174,7 @@ def render_overview_tab():
     st.markdown("---")
     
     # Informations de session
-    st.markdown("### ℹ️ Session Information")
+    st.markdown("###  Session Information")
     
     session_info = {
         "Session Started": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),

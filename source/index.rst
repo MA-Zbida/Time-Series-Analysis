@@ -1,5 +1,10 @@
-==================================
-Prévision de l'Économie Marocaine
+.. raw:: html
+
+   <div style="display: flex; align-items: center; margin-bottom: 20px;">
+     <img src="_static/images/image.png" alt="Logo" width="80" style="margin-right: 20px;">
+     <h1 style="margin: 0;">Prévision de l'Économie Marocaine</h1>
+   </div>
+
 ==================================
 
 .. image:: https://img.shields.io/badge/Statut-Actif-green
@@ -130,10 +135,10 @@ L'Assistant IA est un chatbot intelligent conçu pour extraire et créer des év
 Fonctionnalités
 ---------------
 
-🤖 **Traitement du Langage Naturel**
+ **Traitement du Langage Naturel**
    Le chatbot peut comprendre et traiter les descriptions d'événements écrites en français naturel, en extrayant automatiquement les informations clés.
 
-📅 **Extraction Intelligente de Dates**
+ **Extraction Intelligente de Dates**
    Prend en charge plusieurs formats de dates et expressions :
    
    - Formats standard : ``JJ/MM/AAAA``, ``AAAA-MM-JJ``
@@ -141,19 +146,19 @@ Fonctionnalités
    - Expressions relatives : "début 2030", "deuxième trimestre 2027"
    - Dates contextuelles : "en 2029", "pour 2030"
 
-🏷️ **Catégorisation Automatique**
+ **Catégorisation Automatique**
    Les événements sont automatiquement classés en 8 catégories principales :
    
-   - 🏗️ Infrastructure & Transport
-   - ⚡ Énergie & Environnement
-   - 🏭 Industrie & Manufacturing
-   - 🌾 Agriculture & Agroalimentaire
-   - 🏖️ Tourisme & Culture
-   - 🏥 Santé & Éducation
-   - 📱 Digital & Technologies
-   - 💼 Économie & Finance
+   -  Infrastructure & Transport
+   -  Énergie & Environnement
+   -  Industrie & Manufacturing
+   -  Agriculture & Agroalimentaire
+   -  Tourisme & Culture
+   -  Santé & Éducation
+   -  Digital & Technologies
+   -  Économie & Finance
 
-📊 **Analyse d'Impact**
+ **Analyse d'Impact**
    Le système détermine automatiquement :
    
    - **Sentiment** : Impact positif (Good) ou négatif (Bad)
@@ -161,7 +166,7 @@ Fonctionnalités
    - **Durée** : Durée de l'événement en mois
    - **Type de Courbe** : Distribution d'impact linéaire, exponentielle ou gaussienne
 
-📍 **Reconnaissance Géographique**
+ **Reconnaissance Géographique**
    Identifie automatiquement les villes marocaines mentionnées dans les descriptions d'événements et les associe à l'événement.
 
 Modes de Saisie
@@ -383,10 +388,10 @@ Exemples de Bonnes Saisies
 
 .. code-block:: text
 
-   ✅ "Inauguration d'une centrale solaire de 200MW à Ouarzazate en septembre 2028, 
+    "Inauguration d'une centrale solaire de 200MW à Ouarzazate en septembre 2028, 
        avec un impact économique majeur sur la région"
    
-   ✅ "Fermeture définitive de l'usine textile de Casablanca prévue pour fin 2027, 
+    "Fermeture définitive de l'usine textile de Casablanca prévue pour fin 2027, 
        entraînant une crise de l'emploi local"
 
 Exemples de Mauvaises Saisies
@@ -394,9 +399,9 @@ Exemples de Mauvaises Saisies
 
 .. code-block:: text
 
-   ❌ "Quelque chose va se passer"  # Trop vague
-   ❌ "Nouveau projet"              # Détails manquants
-   ❌ "Impact économique"           # Aucune description d'événement
+    "Quelque chose va se passer"  # Trop vague
+    "Nouveau projet"              # Détails manquants
+    "Impact économique"           # Aucune description d'événement
 
 Limitations
 -----------
@@ -459,7 +464,7 @@ Lancer l'Application
 .. code-block:: bash
 
     # Démarrer l'application Streamlit
-    streamlit run interface/app.py
+    streamlit run Interface/app.py
 
 .. toctree::
    :maxdepth: 2
